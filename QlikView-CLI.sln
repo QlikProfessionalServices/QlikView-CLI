@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QlikView-CLI", "QlikView-CLI.csproj", "{12533006-88FE-40A3-8D9A-60492DDE9B5B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{02F8984F-3390-4ED7-9F97-58A4A36506B7}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12533006-88FE-40A3-8D9A-60492DDE9B5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12533006-88FE-40A3-8D9A-60492DDE9B5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12533006-88FE-40A3-8D9A-60492DDE9B5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12533006-88FE-40A3-8D9A-60492DDE9B5B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95CD4DB1-EF5F-46BE-82C1-AD039F50333D}
+		BuildVersion_UpdateAssemblyVersion = False
+		BuildVersion_UpdateFileVersion = False
+		BuildVersion_StartDate = 2000/1/1
+		BuildVersion_BuildVersioningStyle = None.None.None.None
+		BuildVersion_AssemblyInfoFilename = Properties\AssemblyInfo.cs
+		BuildVersion_UseGlobalSettings = True
+	EndGlobalSection
+EndGlobal

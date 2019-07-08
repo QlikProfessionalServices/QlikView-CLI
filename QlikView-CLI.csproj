@@ -1,0 +1,618 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{12533006-88FE-40A3-8D9A-60492DDE9B5B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QlikView_CLI</RootNamespace>
+    <AssemblyName>QlikView-CLI</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>NNet-Code-Signing_keysig.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\System.Management.Automation.dll.10.0.10586.0\lib\net40\System.Management.Automation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connected Services\QMSAPI\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="PWSH\BaseClass.cs" />
+    <Compile Include="PWSH\ConnectQlikView.cs" />
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.AssignedUser.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.Assignments.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.LicenseDefinition.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.LicenseModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.LicenseOverview.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.LogFileEntry.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.TaskLogHistoryEntries.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QMSBackendService.wsdl" />
+    <None Include="Connected Services\QMSAPI\Service.wsdl" />
+    <None Include="Connected Services\QMSAPI\Service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QMSAPI\Service1.wsdl" />
+    <None Include="Connected Services\QMSAPI\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QMSAPI\Service10.wsdl" />
+    <None Include="Connected Services\QMSAPI\Service10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QMSAPI\Service11.wsdl" />
+    <None Include="Connected Services\QMSAPI\Service11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QMSAPI\Service12.wsdl" />
+    <None Include="Connected Services\QMSAPI\Service12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QMSAPI\Service13.wsdl" />
+    <None Include="Connected Services\QMSAPI\Service13.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QMSAPI\Service14.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QMSAPI\Service15.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QMSAPI\Service16.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QMSAPI\Service19.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QMSAPI\Service2.wsdl" />
+    <None Include="Connected Services\QMSAPI\Service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QMSAPI\Service20.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QMSAPI\Service21.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QMSAPI\Service22.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QMSAPI\Service3.wsdl" />
+    <None Include="Connected Services\QMSAPI\Service3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QMSAPI\Service4.wsdl" />
+    <None Include="Connected Services\QMSAPI\Service4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QMSAPI\Service5.wsdl" />
+    <None Include="Connected Services\QMSAPI\Service5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QMSAPI\Service6.wsdl" />
+    <None Include="Connected Services\QMSAPI\Service6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QMSAPI\Service7.wsdl" />
+    <None Include="Connected Services\QMSAPI\Service7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QMSAPI\Service8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QMSAPI\Service9.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Compile Include="PWSH\Generated\Add\Selections.cs" />
+    <Compile Include="PWSH\Generated\Clear\License.cs" />
+    <Compile Include="PWSH\Generated\Clear\QVSCache.cs" />
+    <Compile Include="PWSH\Generated\Clear\Selections.cs" />
+    <Compile Include="PWSH\Generated\Close\AndInstallExtensionObject.cs" />
+    <Compile Include="PWSH\Generated\Close\Session.cs" />
+    <Compile Include="PWSH\Generated\Confirm\License.cs" />
+    <Compile Include="PWSH\Generated\Find\EDX.cs" />
+    <Compile Include="PWSH\Generated\Find\Names.cs" />
+    <Compile Include="PWSH\Generated\Find\Task.cs" />
+    <Compile Include="PWSH\Generated\Get\AlertText.cs" />
+    <Compile Include="PWSH\Generated\Get\AllDistributionGroups.cs" />
+    <Compile Include="PWSH\Generated\Get\AllMissingDistributionGroups.cs" />
+    <Compile Include="PWSH\Generated\Get\AssignedUsers.cs" />
+    <Compile Include="PWSH\Generated\Get\AvailableDirectories.cs" />
+    <Compile Include="PWSH\Generated\Get\AvailableDSProviders.cs" />
+    <Compile Include="PWSH\Generated\Get\CALConfiguration.cs" />
+    <Compile Include="PWSH\Generated\Get\CALInfoForUser.cs" />
+    <Compile Include="PWSH\Generated\Get\Categories.cs" />
+    <Compile Include="PWSH\Generated\Get\DistributionGroups.cs" />
+    <Compile Include="PWSH\Generated\Get\DistributionGroupsDefinition.cs" />
+    <Compile Include="PWSH\Generated\Get\DocumentBookmarkNames.cs" />
+    <Compile Include="PWSH\Generated\Get\DocumentFolder.cs" />
+    <Compile Include="PWSH\Generated\Get\DocumentFolderAdministrators.cs" />
+    <Compile Include="PWSH\Generated\Get\DocumentLog.cs" />
+    <Compile Include="PWSH\Generated\Get\DocumentMetaData.cs" />
+    <Compile Include="PWSH\Generated\Get\DocumentTask.cs" />
+    <Compile Include="PWSH\Generated\Get\DSCAPISettings.cs" />
+    <Compile Include="PWSH\Generated\Get\DSPAPISettings.cs" />
+    <Compile Include="PWSH\Generated\Get\DSResources.cs" />
+    <Compile Include="PWSH\Generated\Get\EDXTaskStatus.cs" />
+    <Compile Include="PWSH\Generated\Get\FieldContentList.cs" />
+    <Compile Include="PWSH\Generated\Get\FieldList.cs" />
+    <Compile Include="PWSH\Generated\Get\HashCode.cs" />
+    <Compile Include="PWSH\Generated\Get\LatestTaskLog.cs" />
+    <Compile Include="PWSH\Generated\Get\License.cs" />
+    <Compile Include="PWSH\Generated\Get\LicenseOverview.cs" />
+    <Compile Include="PWSH\Generated\Get\NewLicense.cs" />
+    <Compile Include="PWSH\Generated\Get\QDSSettings.cs" />
+    <Compile Include="PWSH\Generated\Get\QMSVersion.cs" />
+    <Compile Include="PWSH\Generated\Get\QVPRAPISettings.cs" />
+    <Compile Include="PWSH\Generated\Get\QVSDocumentsAndUsers.cs" />
+    <Compile Include="PWSH\Generated\Get\QVSDocumentsPerUser.cs" />
+    <Compile Include="PWSH\Generated\Get\QVSLicenseInfo.cs" />
+    <Compile Include="PWSH\Generated\Get\QVSPerformanceData.cs" />
+    <Compile Include="PWSH\Generated\Get\QVSSettings.cs" />
+    <Compile Include="PWSH\Generated\Get\QVSUtilizationData.cs" />
+    <Compile Include="PWSH\Generated\Get\QVWSAuthentication.cs" />
+    <Compile Include="PWSH\Generated\Get\QVWSSetting.cs" />
+    <Compile Include="PWSH\Generated\Get\ReloadEngineServices.cs" />
+    <Compile Include="PWSH\Generated\Get\RemoteDocumentTask.cs" />
+    <Compile Include="PWSH\Generated\Get\RemoteServices.cs" />
+    <Compile Include="PWSH\Generated\Get\RemoteSourceDocumentFolders.cs" />
+    <Compile Include="PWSH\Generated\Get\RemoteSourceDocumentNodes.cs" />
+    <Compile Include="PWSH\Generated\Get\RemoteTaskListForDocID.cs" />
+    <Compile Include="PWSH\Generated\Get\RemoteTasks.cs" />
+    <Compile Include="PWSH\Generated\Get\Reports.cs" />
+    <Compile Include="PWSH\Generated\Get\SectionAccessTable.cs" />
+    <Compile Include="PWSH\Generated\Get\SectionAccessTableByName.cs" />
+    <Compile Include="PWSH\Generated\Get\SectionAccessTables.cs" />
+    <Compile Include="PWSH\Generated\Get\ServerObject.cs" />
+    <Compile Include="PWSH\Generated\Get\ServerObjectMetaDataForUser.cs" />
+    <Compile Include="PWSH\Generated\Get\ServerObjects.cs" />
+    <Compile Include="PWSH\Generated\Get\Services.cs" />
+    <Compile Include="PWSH\Generated\Get\ServiceStatuses.cs" />
+    <Compile Include="PWSH\Generated\Get\SourceDocumentFolders.cs" />
+    <Compile Include="PWSH\Generated\Get\SourceDocumentNodes.cs" />
+    <Compile Include="PWSH\Generated\Get\SourceDocuments.cs" />
+    <Compile Include="PWSH\Generated\Get\Task.cs" />
+    <Compile Include="PWSH\Generated\Get\TaskLog.cs" />
+    <Compile Include="PWSH\Generated\Get\TaskLogHistoryEntries.cs" />
+    <Compile Include="PWSH\Generated\Get\Tasks.cs" />
+    <Compile Include="PWSH\Generated\Get\TasksForDocument.cs" />
+    <Compile Include="PWSH\Generated\Get\TaskStatus.cs" />
+    <Compile Include="PWSH\Generated\Get\TaskStatuses.cs" />
+    <Compile Include="PWSH\Generated\Get\TaskStatusNodes.cs" />
+    <Compile Include="PWSH\Generated\Get\TemplateFolderId.cs" />
+    <Compile Include="PWSH\Generated\Get\TimeLimitedServiceKey.cs" />
+    <Compile Include="PWSH\Generated\Get\UserDocumentFolders.cs" />
+    <Compile Include="PWSH\Generated\Get\UserDocumentNodes.cs" />
+    <Compile Include="PWSH\Generated\Get\UserDocuments.cs" />
+    <Compile Include="PWSH\Generated\Import\AllDocumentTasksForQds.cs" />
+    <Compile Include="PWSH\Generated\Import\DocumentTask.cs" />
+    <Compile Include="PWSH\Generated\Invoke\UploadExtensionObject.cs" />
+    <Compile Include="PWSH\Generated\New\Allotment.cs" />
+    <Compile Include="PWSH\Generated\New\AssignedNamedCAL.cs" />
+    <Compile Include="PWSH\Generated\New\AssignedSessionCAL.cs" />
+    <Compile Include="PWSH\Generated\New\AssignedUsageCAL.cs" />
+    <Compile Include="PWSH\Generated\New\AssignedUser.cs" />
+    <Compile Include="PWSH\Generated\New\AssignedUserDeletion.cs" />
+    <Compile Include="PWSH\Generated\New\Assignment.cs" />
+    <Compile Include="PWSH\Generated\New\Assignments.cs" />
+    <Compile Include="PWSH\Generated\New\CAL.cs" />
+    <Compile Include="PWSH\Generated\New\CALConfiguration.cs" />
+    <Compile Include="PWSH\Generated\New\CALConfigurationDocumentCALs.cs" />
+    <Compile Include="PWSH\Generated\New\CALConfigurationNamedCALs.cs" />
+    <Compile Include="PWSH\Generated\New\CALConfigurationSessionCALs.cs" />
+    <Compile Include="PWSH\Generated\New\CALConfigurationUsageCALs.cs" />
+    <Compile Include="PWSH\Generated\New\Category.cs" />
+    <Compile Include="PWSH\Generated\New\DirectoryServiceConnectorAPISettings.cs" />
+    <Compile Include="PWSH\Generated\New\DirectoryServiceObject.cs" />
+    <Compile Include="PWSH\Generated\New\DistributionConfigValues.cs" />
+    <Compile Include="PWSH\Generated\New\DocumentAccessEntry.cs" />
+    <Compile Include="PWSH\Generated\New\DocumentAttribute.cs" />
+    <Compile Include="PWSH\Generated\New\DocumentCAL.cs" />
+    <Compile Include="PWSH\Generated\New\DocumentFolder.cs" />
+    <Compile Include="PWSH\Generated\New\DocumentFolderAdministrators.cs" />
+    <Compile Include="PWSH\Generated\New\DocumentFolderGeneral.cs" />
+    <Compile Include="PWSH\Generated\New\DocumentFolderServices.cs" />
+    <Compile Include="PWSH\Generated\New\DocumentMetaData.cs" />
+    <Compile Include="PWSH\Generated\New\DocumentMetaDataAuthorization.cs" />
+    <Compile Include="PWSH\Generated\New\DocumentMetaDataCollaboration.cs" />
+    <Compile Include="PWSH\Generated\New\DocumentMetaDataDocumentInfo.cs" />
+    <Compile Include="PWSH\Generated\New\DocumentMetaDataLicensing.cs" />
+    <Compile Include="PWSH\Generated\New\DocumentMetaDataServer.cs" />
+    <Compile Include="PWSH\Generated\New\DocumentMetaDataServerAccess.cs" />
+    <Compile Include="PWSH\Generated\New\DocumentMetaDataServerDocumentLoad.cs" />
+    <Compile Include="PWSH\Generated\New\DocumentNode.cs" />
+    <Compile Include="PWSH\Generated\New\DocumentTask.cs" />
+    <Compile Include="PWSH\Generated\New\DSProvider.cs" />
+    <Compile Include="PWSH\Generated\New\DSPSettings.cs" />
+    <Compile Include="PWSH\Generated\New\DSResource.cs" />
+    <Compile Include="PWSH\Generated\New\EDXStatus.cs" />
+    <Compile Include="PWSH\Generated\New\ExtensionUploadHandle.cs" />
+    <Compile Include="PWSH\Generated\New\ExternalEventTrigger.cs" />
+    <Compile Include="PWSH\Generated\New\Feature.cs" />
+    <Compile Include="PWSH\Generated\New\Field.cs" />
+    <Compile Include="PWSH\Generated\New\FieldContent.cs" />
+    <Compile Include="PWSH\Generated\New\FieldValue.cs" />
+    <Compile Include="PWSH\Generated\New\Interval.cs" />
+    <Compile Include="PWSH\Generated\New\LastExecutionInterval.cs" />
+    <Compile Include="PWSH\Generated\New\LeasedNamedCAL.cs" />
+    <Compile Include="PWSH\Generated\New\License.cs" />
+    <Compile Include="PWSH\Generated\New\LicenseDefinition.cs" />
+    <Compile Include="PWSH\Generated\New\LicenseDefinitionAllotment.cs" />
+    <Compile Include="PWSH\Generated\New\LicenseFeature.cs" />
+    <Compile Include="PWSH\Generated\New\LicenseOverview.cs" />
+    <Compile Include="PWSH\Generated\New\LogFileEntry.cs" />
+    <Compile Include="PWSH\Generated\New\MultipleEventTrigger.cs" />
+    <Compile Include="PWSH\Generated\New\Provision.cs" />
+    <Compile Include="PWSH\Generated\New\QDSAdvanced.cs" />
+    <Compile Include="PWSH\Generated\New\QDSClusterInfo.cs" />
+    <Compile Include="PWSH\Generated\New\QDSDocumentSession.cs" />
+    <Compile Include="PWSH\Generated\New\QDSDocumentSessionConfiguration.cs" />
+    <Compile Include="PWSH\Generated\New\QDSEmail.cs" />
+    <Compile Include="PWSH\Generated\New\QDSGeneral.cs" />
+    <Compile Include="PWSH\Generated\New\QDSLogin.cs" />
+    <Compile Include="PWSH\Generated\New\QDSSettings.cs" />
+    <Compile Include="PWSH\Generated\New\QMSVersion.cs" />
+    <Compile Include="PWSH\Generated\New\QVPRAPISettings.cs" />
+    <Compile Include="PWSH\Generated\New\QVSCluster.cs" />
+    <Compile Include="PWSH\Generated\New\QVSClusterLicense.cs" />
+    <Compile Include="PWSH\Generated\New\QVSClusterMember.cs" />
+    <Compile Include="PWSH\Generated\New\QVSDistribution.cs" />
+    <Compile Include="PWSH\Generated\New\QVSDocuments.cs" />
+    <Compile Include="PWSH\Generated\New\QVSDocumentsObjects.cs" />
+    <Compile Include="PWSH\Generated\New\QVSDocumentsServer.cs" />
+    <Compile Include="PWSH\Generated\New\QVSFolderAdministrator.cs" />
+    <Compile Include="PWSH\Generated\New\QVSFolders.cs" />
+    <Compile Include="PWSH\Generated\New\QVSFoldersSystem.cs" />
+    <Compile Include="PWSH\Generated\New\QVSGeneral.cs" />
+    <Compile Include="PWSH\Generated\New\QVSLogging.cs" />
+    <Compile Include="PWSH\Generated\New\QVSLoggingLevel.cs" />
+    <Compile Include="PWSH\Generated\New\QVSMessage.cs" />
+    <Compile Include="PWSH\Generated\New\QVSMount.cs" />
+    <Compile Include="PWSH\Generated\New\QVSPerformance.cs" />
+    <Compile Include="PWSH\Generated\New\QVSPerformanceCPU.cs" />
+    <Compile Include="PWSH\Generated\New\QVSPerformanceDocument.cs" />
+    <Compile Include="PWSH\Generated\New\QVSPerformanceSessions.cs" />
+    <Compile Include="PWSH\Generated\New\QVSPerformanceWorkingSetMemory.cs" />
+    <Compile Include="PWSH\Generated\New\QVSSecurity.cs" />
+    <Compile Include="PWSH\Generated\New\QVSSecurityAuthentication.cs" />
+    <Compile Include="PWSH\Generated\New\QVSSecurityAuthorization.cs" />
+    <Compile Include="PWSH\Generated\New\QVSSettings.cs" />
+    <Compile Include="PWSH\Generated\New\QVSSupervisionAccount.cs" />
+    <Compile Include="PWSH\Generated\New\QVWSAuthentication.cs" />
+    <Compile Include="PWSH\Generated\New\QVWSSettings.cs" />
+    <Compile Include="PWSH\Generated\New\RecurrenceTrigger.cs" />
+    <Compile Include="PWSH\Generated\New\RecurrenceTriggerContinuous.cs" />
+    <Compile Include="PWSH\Generated\New\RecurrenceTriggerDaily.cs" />
+    <Compile Include="PWSH\Generated\New\RecurrenceTriggerHourly.cs" />
+    <Compile Include="PWSH\Generated\New\RecurrenceTriggerMonthly.cs" />
+    <Compile Include="PWSH\Generated\New\RecurrenceTriggerWeekly.cs" />
+    <Compile Include="PWSH\Generated\New\Report.cs" />
+    <Compile Include="PWSH\Generated\New\ScheduleInterval.cs" />
+    <Compile Include="PWSH\Generated\New\ScheduleTrigger.cs" />
+    <Compile Include="PWSH\Generated\New\SectionAccessCell.cs" />
+    <Compile Include="PWSH\Generated\New\SectionAccessColumn.cs" />
+    <Compile Include="PWSH\Generated\New\SectionAccessRow.cs" />
+    <Compile Include="PWSH\Generated\New\SectionAccessTable.cs" />
+    <Compile Include="PWSH\Generated\New\ServerObject.cs" />
+    <Compile Include="PWSH\Generated\New\ServerObjectMetaData.cs" />
+    <Compile Include="PWSH\Generated\New\ServiceInfo.cs" />
+    <Compile Include="PWSH\Generated\New\ServiceStatus.cs" />
+    <Compile Include="PWSH\Generated\New\ServiceStatusDetail.cs" />
+    <Compile Include="PWSH\Generated\New\ServiceUpdateStatus.cs" />
+    <Compile Include="PWSH\Generated\New\Session.cs" />
+    <Compile Include="PWSH\Generated\New\TaskDistribute.cs" />
+    <Compile Include="PWSH\Generated\New\TaskDistributeCloudNative.cs" />
+    <Compile Include="PWSH\Generated\New\TaskDistributeDynamic.cs" />
+    <Compile Include="PWSH\Generated\New\TaskDistributeNotification.cs" />
+    <Compile Include="PWSH\Generated\New\TaskDistributeOutput.cs" />
+    <Compile Include="PWSH\Generated\New\TaskDistributeOutputPDF.cs" />
+    <Compile Include="PWSH\Generated\New\TaskDistributeStatic.cs" />
+    <Compile Include="PWSH\Generated\New\TaskDistributionDestination.cs" />
+    <Compile Include="PWSH\Generated\New\TaskDistributionDestinationFolder.cs" />
+    <Compile Include="PWSH\Generated\New\TaskDistributionDestinationQlikViewServer.cs" />
+    <Compile Include="PWSH\Generated\New\TaskDistributionEntry.cs" />
+    <Compile Include="PWSH\Generated\New\TaskDocumentInfo.cs" />
+    <Compile Include="PWSH\Generated\New\TaskDocumentLoadClusterSetting.cs" />
+    <Compile Include="PWSH\Generated\New\TaskEventTrigger.cs" />
+    <Compile Include="PWSH\Generated\New\TaskExecutionItem.cs" />
+    <Compile Include="PWSH\Generated\New\TaskGeneral.cs" />
+    <Compile Include="PWSH\Generated\New\TaskInfo.cs" />
+    <Compile Include="PWSH\Generated\New\TaskLogHistoryEntries.cs" />
+    <Compile Include="PWSH\Generated\New\TaskReduce.cs" />
+    <Compile Include="PWSH\Generated\New\TaskReduceDynamic.cs" />
+    <Compile Include="PWSH\Generated\New\TaskReduceStatic.cs" />
+    <Compile Include="PWSH\Generated\New\TaskReduction.cs" />
+    <Compile Include="PWSH\Generated\New\TaskReductionBookmark.cs" />
+    <Compile Include="PWSH\Generated\New\TaskReductionField.cs" />
+    <Compile Include="PWSH\Generated\New\TaskReload.cs" />
+    <Compile Include="PWSH\Generated\New\TaskServer.cs" />
+    <Compile Include="PWSH\Generated\New\TaskServerAccess.cs" />
+    <Compile Include="PWSH\Generated\New\TaskServerCollaboration.cs" />
+    <Compile Include="PWSH\Generated\New\TaskServerDocumentLoading.cs" />
+    <Compile Include="PWSH\Generated\New\TaskServerDocumentLoadServerSetting.cs" />
+    <Compile Include="PWSH\Generated\New\TaskStatus.cs" />
+    <Compile Include="PWSH\Generated\New\TaskStatusExtended.cs" />
+    <Compile Include="PWSH\Generated\New\TaskStatusFilter.cs" />
+    <Compile Include="PWSH\Generated\New\TaskStatusGeneral.cs" />
+    <Compile Include="PWSH\Generated\New\TaskStatusNode.cs" />
+    <Compile Include="PWSH\Generated\New\TaskStatusNodeRequest.cs" />
+    <Compile Include="PWSH\Generated\New\TaskTriggering.cs" />
+    <Compile Include="PWSH\Generated\New\Trigger.cs" />
+    <Compile Include="PWSH\Generated\New\TriggerEDXTaskResult.cs" />
+    <Compile Include="PWSH\Generated\New\Unit.cs" />
+    <Compile Include="PWSH\Generated\New\Usage.cs" />
+    <Compile Include="PWSH\Generated\New\UserCALs.cs" />
+    <Compile Include="PWSH\Generated\Remove\AssignedUsers.cs" />
+    <Compile Include="PWSH\Generated\Remove\DocumentAdministrators.cs" />
+    <Compile Include="PWSH\Generated\Remove\SectionAccessTable.cs" />
+    <Compile Include="PWSH\Generated\Remove\ServerObject.cs" />
+    <Compile Include="PWSH\Generated\Remove\Task.cs" />
+    <Compile Include="PWSH\Generated\Resolve\UserGroups.cs" />
+    <Compile Include="PWSH\Generated\Restart\QDS.cs" />
+    <Compile Include="PWSH\Generated\Restart\QVS.cs" />
+    <Compile Include="PWSH\Generated\Save\CALConfiguration.cs" />
+    <Compile Include="PWSH\Generated\Save\DocumentMetaData.cs" />
+    <Compile Include="PWSH\Generated\Save\DocumentTask.cs" />
+    <Compile Include="PWSH\Generated\Save\License.cs" />
+    <Compile Include="PWSH\Generated\Save\NewLicense.cs" />
+    <Compile Include="PWSH\Generated\Save\QDSSettings.cs" />
+    <Compile Include="PWSH\Generated\Save\QVSSettings.cs" />
+    <Compile Include="PWSH\Generated\Save\SectionAccessTable.cs" />
+    <Compile Include="PWSH\Generated\Select\Server.cs" />
+    <Compile Include="PWSH\Generated\Select\ServerEx.cs" />
+    <Compile Include="PWSH\Generated\Send\DistributionServiceWorkorder.cs" />
+    <Compile Include="PWSH\Generated\Set\AssignedUsers.cs" />
+    <Compile Include="PWSH\Generated\Set\DocumentFolderAdministrator.cs" />
+    <Compile Include="PWSH\Generated\Set\DocumentFolderAdministratorForEmail.cs" />
+    <Compile Include="PWSH\Generated\Set\DSCAPISettings.cs" />
+    <Compile Include="PWSH\Generated\Set\DSPAPISettings.cs" />
+    <Compile Include="PWSH\Generated\Set\QVPRAPISettings.cs" />
+    <Compile Include="PWSH\Generated\Set\QVWSAuthentication.cs" />
+    <Compile Include="PWSH\Generated\Set\QVWSSetting.cs" />
+    <Compile Include="PWSH\Generated\Show\InitializationUI.cs" />
+    <Compile Include="PWSH\Generated\Start\EDXTask.cs" />
+    <Compile Include="PWSH\Generated\Start\Task.cs" />
+    <Compile Include="PWSH\Generated\Stop\DistributionService.cs" />
+    <Compile Include="PWSH\Generated\Stop\Task.cs" />
+    <Compile Include="PWSH\Generated\Test\AnyDistributionGroups.cs" />
+    <Compile Include="PWSH\Generated\Test\DocumentFolderAdministrator.cs" />
+    <Compile Include="PWSH\Generated\Test\DocumentFolderAdministratorForFolder.cs" />
+    <Compile Include="PWSH\Generated\Test\DocumentFolderAdministratorForType.cs" />
+    <Compile Include="PWSH\Generated\Test\HasValidLicense.cs" />
+    <Compile Include="PWSH\Generated\Test\LicenseServerStatus.cs" />
+    <Compile Include="PWSH\Generated\Test\LoadBalancerConfigHasErrors.cs" />
+    <Compile Include="PWSH\Generated\Test\Ping.cs" />
+    <Compile Include="PWSH\Generated\Test\PublisherQDS.cs" />
+    <Compile Include="PWSH\Generated\Test\QdsLoadbalancerConfigured.cs" />
+    <Compile Include="PWSH\Generated\Test\Restart.cs" />
+    <Compile Include="PWSH\Generated\Test\UserDocumentFolderAdministrator.cs" />
+    <Compile Include="PWSH\Generated\Test\UserDocumentFolderAdministratorForFolder.cs" />
+    <Compile Include="PWSH\Generated\Update\DocumentAdministratorEmail.cs" />
+    <Compile Include="PWSH\Generated\Update\License.cs" />
+    <Compile Include="PWSH\Generated\Update\Services.cs" />
+    <Compile Include="PWSH\Generated\Write\ExtensionObject.cs" />
+    <Compile Include="Management\Globals.cs" />
+    <Compile Include="Management\Inspector.cs" />
+    <Compile Include="Management\QMS.cs" />
+    <Compile Include="Management\Validator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="NNet-Code-Signing_keysig.pfx" />
+    <None Include="Scratch.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.CALConfiguration.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.Category.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.DirectoryServiceConnectorAPISettings.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.DirectoryServiceObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.DistributionConfigValues.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.DocumentFolder.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.DocumentMetaData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.DocumentNode.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.DocumentTask.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.DSProvider.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.DSPSettings.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.DSResource.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.EDXStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.eStatusFlag.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.ExtensionUploadHandle.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.Field.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.FieldContent.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.License.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.QDSDocumentSession.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.QDSSettings.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.QMSVersion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.QVPRAPISettings.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.QVSMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.QVSSettings.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.QVWSAuthentication.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.QVWSSettings.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.Report.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.SectionAccessTable.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.ServerObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.ServerObjectMetaData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.ServiceInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.ServiceStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.ServiceUpdateStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.TaskInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.TaskStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.TaskStatusNode.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.TriggerEDXTaskResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QMSAPI\QlikView_CLI.QMSAPI.UserCALs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <None Include="Properties\DataSources\System.Uri.datasource" />
+    <None Include="Start-Debug.ps1" />
+    <None Include="Post-Build.ps1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\QMSAPI\configuration91.svcinfo" />
+    <None Include="Connected Services\QMSAPI\configuration.svcinfo" />
+    <None Include="Connected Services\QMSAPI\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="QlikView-CLI\QlikView-CLI.psd1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="QlikView-CLI\QlikView-CLI.psm1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\QMSAPI\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>%25SystemRoot%25\System32\WindowsPowerShell\v1.0\powershell.exe -NonInteractive -NoProfile -ExecutionPolicy RemoteSigned -NoLogo -Command "&amp; '$(ProjectDir)\Post-Build.ps1' -ConfigurationName '$(ConfigurationName)' -OutDir '$(OutDir)' -DevEnvDir '$(DevEnvDir)' -PlatformName '$(PlatformName)' -ProjectDir '$(ProjectDir)' -ProjectPath '$(ProjectPath)' -ProjectName '$(ProjectName)' -ProjectFileName '$(ProjectFileName)' -ProjectExt '$(ProjectExt)' -SolutionDir '$(SolutionDir)' -SolutionPath '$(SolutionPath)' -SolutionName '$(SolutionName)' -SolutionFileName '$(SolutionFileName)' -SolutionExt '$(SolutionExt)' -TargetDir '$(TargetDir)' -TargetPath '$(TargetPath)' -TargetName '$(TargetName)' -TargetFileName '$(TargetFileName)' -TargetExt '$(TargetExt)'"</PostBuildEvent>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties BuildVersion_BuildVersioningStyle="None.None.YearMonthDayStamp.YearDayOfYearStamp" BuildVersion_StartDate="2000/1/1" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" BuildVersion_AssemblyInfoFilename="Properties\AssemblyInfo.cs" BuildVersion_UseGlobalSettings="True" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
