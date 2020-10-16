@@ -11,10 +11,10 @@
 #>
 
 #First Update the QMSAPI and generate the Assembly. (Stage 1)
-$QlikViewCLIAssembly = '.\bin\Release\QlikView-CLI.dll'
+$QlikViewCLIAssembly = "$($PWD.Path)\bin\Release\QlikView-CLI.dll"
 $BaseQMSAPIURL = "https://help.qlik.com/en-US/qlikview-developer/April2020/APIs/QMS+API/html/"
 
-[System.IO.DirectoryInfo]$OutputDirectory = ".\PWSH\Generated"
+[System.IO.DirectoryInfo]$OutputDirectory = "$($PWD.Path)\PWSH\Generated"
 #Import the Generated Assembly
 Import-Module $QlikViewCLIAssembly
 
