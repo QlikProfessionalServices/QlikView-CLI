@@ -242,7 +242,3 @@ if ($Null -ne $(get-command dotnet-format))
 {
 	& dotnet-format -v diag --folder .\
 }
-
-Get-ChildItem ".\PWSH\Generated\New" | ForEach-Object{
-	$(Get-Content $_.fullname) | out-file $_.fullname -Encoding utf8BOM
-}
