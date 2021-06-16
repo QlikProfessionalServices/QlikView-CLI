@@ -13,7 +13,7 @@
 RootModule = 'QlikView-CLI.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.6'
+ModuleVersion = '1.6.21167.16064'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -70,16 +70,152 @@ PowerShellVersion = '4.0'
 NestedModules = @('QlikView-CLI.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-#FunctionsToExport = @()
+FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-#CmdletsToExport  = @()
+CmdletsToExport = 'Connect-QlikView', 'Add-QVSelections', 'Clear-QVLicense', 
+               'Clear-QVQVSCache', 'Clear-QVSelections', 
+               'Close-QVAndInstallExtensionObject', 'Close-QVSession', 
+               'Confirm-QVLicense', 'Find-QVEDX', 'Find-QVNames', 'Find-QVTask', 
+               'Get-QVAlertText', 'Get-QVAllDistributionGroups', 
+               'Get-QVAllMissingDistributionGroups', 'Get-QVAssignedUsers', 
+               'Get-QVAvailableDirectories', 'Get-QVAvailableDSProviders', 
+               'Get-QVCALConfiguration', 'Get-QVCALInfoForUser', 'Get-QVCategories', 
+               'Get-QVDistributionGroups', 'Get-QVDistributionGroupsDefinition', 
+               'Get-QVDocumentBookmarkNames', 'Get-QVDocumentFolder', 
+               'Get-QVDocumentFolderAdministrators', 'Get-QVDocumentLog', 
+               'Get-QVDocumentMetaData', 'Get-QVDocumentTask', 
+               'Get-QVDSCAPISettings', 'Get-QVDSPAPISettings', 'Get-QVDSResources', 
+               'Get-QVEDXTaskStatus', 'Get-QVFieldContentList', 'Get-QVFieldList', 
+               'Get-QVHashCode', 'Get-QVLatestTaskLog', 'Get-QVLicense', 
+               'Get-QVLicenseOverview', 'Get-QVNewLicense', 'Get-QVQDSSettings', 
+               'Get-QVQMSVersion', 'Get-QVQVPRAPISettings', 
+               'Get-QVQVSDocumentsAndUsers', 'Get-QVQVSDocumentsPerUser', 
+               'Get-QVQVSLicenseInfo', 'Get-QVQVSPerformanceData', 
+               'Get-QVQVSSettings', 'Get-QVQVSUtilizationData', 
+               'Get-QVQVWSAuthentication', 'Get-QVQVWSSetting', 
+               'Get-QVReloadEngineServices', 'Get-QVRemoteDocumentTask', 
+               'Get-QVRemoteServices', 'Get-QVRemoteSourceDocumentFolders', 
+               'Get-QVRemoteSourceDocumentNodes', 'Get-QVRemoteTaskListForDocID', 
+               'Get-QVRemoteTasks', 'Get-QVReports', 'Get-QVSectionAccessTable', 
+               'Get-QVSectionAccessTableByName', 'Get-QVSectionAccessTables', 
+               'Get-QVServerObject', 'Get-QVServerObjectMetaDataForUser', 
+               'Get-QVServerObjects', 'Get-QVServices', 'Get-QVServiceStatuses', 
+               'Get-QVSourceDocumentFolders', 'Get-QVSourceDocumentNodes', 
+               'Get-QVSourceDocuments', 'Get-QVTask', 'Get-QVTaskLog', 
+               'Get-QVTaskLogHistoryEntries', 'Get-QVTasks', 
+               'Get-QVTasksForDocument', 'Get-QVTaskStatus', 'Get-QVTaskStatuses', 
+               'Get-QVTaskStatusNodes', 'Get-QVTemplateFolderId', 
+               'Get-QVTimeLimitedServiceKey', 'Get-QVUserDocumentFolders', 
+               'Get-QVUserDocumentNodes', 'Get-QVUserDocuments', 
+               'Import-QVAllDocumentTasksForQds', 'Import-QVDocumentTask', 
+               'Invoke-QVUploadExtensionObject', 'New-QVAllotment', 
+               'New-QVAssignedNamedCAL', 'New-QVAssignedSessionCAL', 
+               'New-QVAssignedUsageCAL', 'New-QVAssignedUser', 
+               'New-QVAssignedUserDeletion', 'New-QVAssignment', 'New-QVAssignments', 
+               'New-QVCAL', 'New-QVCALConfiguration', 
+               'New-QVCALConfigurationDocumentCALs', 
+               'New-QVCALConfigurationNamedCALs', 
+               'New-QVCALConfigurationSessionCALs', 
+               'New-QVCALConfigurationUsageCALs', 'New-QVCategory', 
+               'New-QVDirectoryServiceConnectorAPISettings', 
+               'New-QVDirectoryServiceObject', 'New-QVDistributionConfigValues', 
+               'New-QVDocumentAccessEntry', 'New-QVDocumentAttribute', 
+               'New-QVDocumentCAL', 'New-QVDocumentFolder', 
+               'New-QVDocumentFolderAdministrators', 'New-QVDocumentFolderGeneral', 
+               'New-QVDocumentFolderServices', 'New-QVDocumentMetaData', 
+               'New-QVDocumentMetaDataAuthorization', 
+               'New-QVDocumentMetaDataCollaboration', 
+               'New-QVDocumentMetaDataDocumentInfo', 
+               'New-QVDocumentMetaDataLicensing', 'New-QVDocumentMetaDataServer', 
+               'New-QVDocumentMetaDataServerAccess', 
+               'New-QVDocumentMetaDataServerDocumentLoad', 'New-QVDocumentNode', 
+               'New-QVDocumentTask', 'New-QVDSProvider', 'New-QVDSPSettings', 
+               'New-QVDSResource', 'New-QVEDXStatus', 'New-QVExtensionUploadHandle', 
+               'New-QVExternalEventTrigger', 'New-QVFeature', 'New-QVField', 
+               'New-QVFieldContent', 'New-QVFieldValue', 'New-QVInterval', 
+               'New-QVLastExecutionInterval', 'New-QVLeasedNamedCAL', 
+               'New-QVLicense', 'New-QVLicenseDefinition', 
+               'New-QVLicenseDefinitionAllotment', 'New-QVLicenseFeature', 
+               'New-QVLicenseOverview', 'New-QVLogFileEntry', 
+               'New-QVMultipleEventTrigger', 'New-QVProvision', 'New-QVQDSAdvanced', 
+               'New-QVQDSClusterInfo', 'New-QVQDSDocumentSession', 
+               'New-QVQDSDocumentSessionConfiguration', 'New-QVQDSEmail', 
+               'New-QVQDSGeneral', 'New-QVQDSLogin', 'New-QVQDSSettings', 
+               'New-QVQMSVersion', 'New-QVQVPRAPISettings', 'New-QVQVSCluster', 
+               'New-QVQVSClusterLicense', 'New-QVQVSClusterMember', 
+               'New-QVQVSDistribution', 'New-QVQVSDocuments', 
+               'New-QVQVSDocumentsObjects', 'New-QVQVSDocumentsServer', 
+               'New-QVQVSFolderAdministrator', 'New-QVQVSFolders', 
+               'New-QVQVSFoldersSystem', 'New-QVQVSGeneral', 'New-QVQVSLogging', 
+               'New-QVQVSLoggingLevel', 'New-QVQVSMessage', 'New-QVQVSMount', 
+               'New-QVQVSPerformance', 'New-QVQVSPerformanceCPU', 
+               'New-QVQVSPerformanceDocument', 'New-QVQVSPerformanceSessions', 
+               'New-QVQVSPerformanceWorkingSetMemory', 'New-QVQVSSecurity', 
+               'New-QVQVSSecurityAuthentication', 'New-QVQVSSecurityAuthorization', 
+               'New-QVQVSSettings', 'New-QVQVSSupervisionAccount', 
+               'New-QVQVWSAuthentication', 'New-QVQVWSSettings', 
+               'New-QVRecurrenceTrigger', 'New-QVRecurrenceTriggerContinuous', 
+               'New-QVRecurrenceTriggerDaily', 'New-QVRecurrenceTriggerHourly', 
+               'New-QVRecurrenceTriggerMonthly', 'New-QVRecurrenceTriggerWeekly', 
+               'New-QVReport', 'New-QVScheduleInterval', 'New-QVScheduleTrigger', 
+               'New-QVSectionAccessCell', 'New-QVSectionAccessColumn', 
+               'New-QVSectionAccessRow', 'New-QVSectionAccessTable', 
+               'New-QVServerObject', 'New-QVServerObjectMetaData', 
+               'New-QVServiceInfo', 'New-QVServiceStatus', 
+               'New-QVServiceStatusDetail', 'New-QVServiceUpdateStatus', 
+               'New-QVSession', 'New-QVTaskDistribute', 
+               'New-QVTaskDistributeCloudNative', 'New-QVTaskDistributeDynamic', 
+               'New-QVTaskDistributeNotification', 'New-QVTaskDistributeOutput', 
+               'New-QVTaskDistributeOutputPDF', 'New-QVTaskDistributeStatic', 
+               'New-QVTaskDistributionDestination', 
+               'New-QVTaskDistributionDestinationFolder', 
+               'New-QVTaskDistributionDestinationQlikViewServer', 
+               'New-QVTaskDistributionEntry', 'New-QVTaskDocumentInfo', 
+               'New-QVTaskDocumentLoadClusterSetting', 'New-QVTaskEventTrigger', 
+               'New-QVTaskExecutionItem', 'New-QVTaskGeneral', 'New-QVTaskInfo', 
+               'New-QVTaskLogHistoryEntries', 'New-QVTaskReduce', 
+               'New-QVTaskReduceDynamic', 'New-QVTaskReduceStatic', 
+               'New-QVTaskReduction', 'New-QVTaskReductionBookmark', 
+               'New-QVTaskReductionField', 'New-QVTaskReload', 'New-QVTaskServer', 
+               'New-QVTaskServerAccess', 'New-QVTaskServerCollaboration', 
+               'New-QVTaskServerDocumentLoading', 
+               'New-QVTaskServerDocumentLoadServerSetting', 'New-QVTaskStatus', 
+               'New-QVTaskStatusExtended', 'New-QVTaskStatusFilter', 
+               'New-QVTaskStatusGeneral', 'New-QVTaskStatusNode', 
+               'New-QVTaskStatusNodeRequest', 'New-QVTaskTriggering', 
+               'New-QVTrigger', 'New-QVTriggerEDXTaskResult', 'New-QVUnit', 
+               'New-QVUsage', 'New-QVUserCALs', 'Remove-QVAssignedUsers', 
+               'Remove-QVDocumentAdministrators', 'Remove-QVSectionAccessTable', 
+               'Remove-QVServerObject', 'Remove-QVTask', 'Resolve-QVUserGroups', 
+               'Restart-QVQDS', 'Restart-QVQVS', 'Save-QVCALConfiguration', 
+               'Save-QVDocumentMetaData', 'Save-QVDocumentTask', 'Save-QVLicense', 
+               'Save-QVNewLicense', 'Save-QVQDSSettings', 'Save-QVQVSSettings', 
+               'Save-QVSectionAccessTable', 'Select-QVServer', 'Select-QVServerEx', 
+               'Send-QVDistributionServiceWorkorder', 'Set-QVAssignedUsers', 
+               'Set-QVDocumentFolderAdministrator', 
+               'Set-QVDocumentFolderAdministratorForEmail', 'Set-QVDSCAPISettings', 
+               'Set-QVDSPAPISettings', 'Set-QVQVPRAPISettings', 
+               'Set-QVQVWSAuthentication', 'Set-QVQVWSSetting', 
+               'Show-QVInitializationUI', 'Start-QVEDXTask', 'Start-QVTask', 
+               'Stop-QVDistributionService', 'Stop-QVTask', 
+               'Test-QVAnyDistributionGroups', 
+               'Test-QVDocumentFolderAdministrator', 
+               'Test-QVDocumentFolderAdministratorForFolder', 
+               'Test-QVDocumentFolderAdministratorForType', 
+               'Test-QVHasValidLicense', 'Test-QVLicenseServerStatus', 
+               'Test-QVLoadBalancerConfigHasErrors', 'Test-QVPing', 
+               'Test-QVPublisherQDS', 'Test-QVQdsLoadbalancerConfigured', 
+               'Test-QVRestart', 'Test-QVUserDocumentFolderAdministrator', 
+               'Test-QVUserDocumentFolderAdministratorForFolder', 
+               'Update-QVDocumentAdministratorEmail', 'Update-QVLicense', 
+               'Update-QVServices', 'Write-QVExtensionObject'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-#AliasesToExport = @()
+AliasesToExport = @()
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -99,29 +235,180 @@ PrivateData = @{
         Tags = 'QlikView','Qlik','QlikView-CLI'
 
         # A URL to the license for this module.
-        # LicenseUri = ''
+        LicenseUri = 'https://github.com/QlikProfessionalServices/QlikView-CLI/blob/main/LICENSE'
 
         # A URL to the main website for this project.
-        # ProjectUri = ''
+        ProjectUri = 'https://github.com/QlikProfessionalServices/QlikView-CLI'
 
         # A URL to an icon representing this module.
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = 'Updated to support QlikView May 2021'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
 
     } # End of PSData hashtable
-
+    
  } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-#DefaultCommandPrefix = 'DefaultCommandPrefix'
+# DefaultCommandPrefix = ''
 
 }
 
+
+# SIG # Begin signature block
+# MIIbmwYJKoZIhvcNAQcCoIIbjDCCG4gCAQExDzANBglghkgBZQMEAgEFADB5Bgor
+# BgEEAYI3AgEEoGswaTA0BgorBgEEAYI3AgEeMCYCAwEAAAQQH8w7YFlLCE63JNLG
+# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCBog1OswSjTPnqu
+# KmLsooBTNDkYNpGuAp8gjpzazYYJoqCCFYQwggT+MIID5qADAgECAhANQkrgvjqI
+# /2BAIc4UAPDdMA0GCSqGSIb3DQEBCwUAMHIxCzAJBgNVBAYTAlVTMRUwEwYDVQQK
+# EwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xMTAvBgNV
+# BAMTKERpZ2lDZXJ0IFNIQTIgQXNzdXJlZCBJRCBUaW1lc3RhbXBpbmcgQ0EwHhcN
+# MjEwMTAxMDAwMDAwWhcNMzEwMTA2MDAwMDAwWjBIMQswCQYDVQQGEwJVUzEXMBUG
+# A1UEChMORGlnaUNlcnQsIEluYy4xIDAeBgNVBAMTF0RpZ2lDZXJ0IFRpbWVzdGFt
+# cCAyMDIxMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwuZhhGfFivUN
+# CKRFymNrUdc6EUK9CnV1TZS0DFC1JhD+HchvkWsMlucaXEjvROW/m2HNFZFiWrj/
+# ZwucY/02aoH6KfjdK3CF3gIY83htvH35x20JPb5qdofpir34hF0edsnkxnZ2OlPR
+# 0dNaNo/Go+EvGzq3YdZz7E5tM4p8XUUtS7FQ5kE6N1aG3JMjjfdQJehk5t3Tjy9X
+# tYcg6w6OLNUj2vRNeEbjA4MxKUpcDDGKSoyIxfcwWvkUrxVfbENJCf0mI1P2jWPo
+# GqtbsR0wwptpgrTb/FZUvB+hh6u+elsKIC9LCcmVp42y+tZji06lchzun3oBc/gZ
+# 1v4NSYS9AQIDAQABo4IBuDCCAbQwDgYDVR0PAQH/BAQDAgeAMAwGA1UdEwEB/wQC
+# MAAwFgYDVR0lAQH/BAwwCgYIKwYBBQUHAwgwQQYDVR0gBDowODA2BglghkgBhv1s
+# BwEwKTAnBggrBgEFBQcCARYbaHR0cDovL3d3dy5kaWdpY2VydC5jb20vQ1BTMB8G
+# A1UdIwQYMBaAFPS24SAd/imu0uRhpbKiJbLIFzVuMB0GA1UdDgQWBBQ2RIaOpLqw
+# Zr68KC0dRDbd42p6vDBxBgNVHR8EajBoMDKgMKAuhixodHRwOi8vY3JsMy5kaWdp
+# Y2VydC5jb20vc2hhMi1hc3N1cmVkLXRzLmNybDAyoDCgLoYsaHR0cDovL2NybDQu
+# ZGlnaWNlcnQuY29tL3NoYTItYXNzdXJlZC10cy5jcmwwgYUGCCsGAQUFBwEBBHkw
+# dzAkBggrBgEFBQcwAYYYaHR0cDovL29jc3AuZGlnaWNlcnQuY29tME8GCCsGAQUF
+# BzAChkNodHRwOi8vY2FjZXJ0cy5kaWdpY2VydC5jb20vRGlnaUNlcnRTSEEyQXNz
+# dXJlZElEVGltZXN0YW1waW5nQ0EuY3J0MA0GCSqGSIb3DQEBCwUAA4IBAQBIHNy1
+# 6ZojvOca5yAOjmdG/UJyUXQKI0ejq5LSJcRwWb4UoOUngaVNFBUZB3nw0QTDhtk7
+# vf5EAmZN7WmkD/a4cM9i6PVRSnh5Nnont/PnUp+Tp+1DnnvntN1BIon7h6JGA078
+# 9P63ZHdjXyNSaYOC+hpT7ZDMjaEXcw3082U5cEvznNZ6e9oMvD0y0BvL9WH8dQgA
+# dryBDvjA4VzPxBFy5xtkSdgimnUVQvUtMjiB2vRgorq0Uvtc4GEkJU+y38kpqHND
+# Udq9Y9YfW5v3LhtPEx33Sg1xfpe39D+E68Hjo0mh+s6nv1bPull2YYlffqe0jmd4
+# +TaY4cso2luHpoovMIIFMDCCBBigAwIBAgIQBAkYG1/Vu2Z1U0O1b5VQCDANBgkq
+# hkiG9w0BAQsFADBlMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5j
+# MRkwFwYDVQQLExB3d3cuZGlnaWNlcnQuY29tMSQwIgYDVQQDExtEaWdpQ2VydCBB
+# c3N1cmVkIElEIFJvb3QgQ0EwHhcNMTMxMDIyMTIwMDAwWhcNMjgxMDIyMTIwMDAw
+# WjByMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQL
+# ExB3d3cuZGlnaWNlcnQuY29tMTEwLwYDVQQDEyhEaWdpQ2VydCBTSEEyIEFzc3Vy
+# ZWQgSUQgQ29kZSBTaWduaW5nIENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+# CgKCAQEA+NOzHH8OEa9ndwfTCzFJGc/Q+0WZsTrbRPV/5aid2zLXcep2nQUut4/6
+# kkPApfmJ1DcZ17aq8JyGpdglrA55KDp+6dFn08b7KSfH03sjlOSRI5aQd4L5oYQj
+# ZhJUM1B0sSgmuyRpwsJS8hRniolF1C2ho+mILCCVrhxKhwjfDPXiTWAYvqrEsq5w
+# MWYzcT6scKKrzn/pfMuSoeU7MRzP6vIK5Fe7SrXpdOYr/mzLfnQ5Ng2Q7+S1TqSp
+# 6moKq4TzrGdOtcT3jNEgJSPrCGQ+UpbB8g8S9MWOD8Gi6CxR93O8vYWxYoNzQYIH
+# 5DiLanMg0A9kczyen6Yzqf0Z3yWT0QIDAQABo4IBzTCCAckwEgYDVR0TAQH/BAgw
+# BgEB/wIBADAOBgNVHQ8BAf8EBAMCAYYwEwYDVR0lBAwwCgYIKwYBBQUHAwMweQYI
+# KwYBBQUHAQEEbTBrMCQGCCsGAQUFBzABhhhodHRwOi8vb2NzcC5kaWdpY2VydC5j
+# b20wQwYIKwYBBQUHMAKGN2h0dHA6Ly9jYWNlcnRzLmRpZ2ljZXJ0LmNvbS9EaWdp
+# Q2VydEFzc3VyZWRJRFJvb3RDQS5jcnQwgYEGA1UdHwR6MHgwOqA4oDaGNGh0dHA6
+# Ly9jcmw0LmRpZ2ljZXJ0LmNvbS9EaWdpQ2VydEFzc3VyZWRJRFJvb3RDQS5jcmww
+# OqA4oDaGNGh0dHA6Ly9jcmwzLmRpZ2ljZXJ0LmNvbS9EaWdpQ2VydEFzc3VyZWRJ
+# RFJvb3RDQS5jcmwwTwYDVR0gBEgwRjA4BgpghkgBhv1sAAIEMCowKAYIKwYBBQUH
+# AgEWHGh0dHBzOi8vd3d3LmRpZ2ljZXJ0LmNvbS9DUFMwCgYIYIZIAYb9bAMwHQYD
+# VR0OBBYEFFrEuXsqCqOl6nEDwGD5LfZldQ5YMB8GA1UdIwQYMBaAFEXroq/0ksuC
+# MS1Ri6enIZ3zbcgPMA0GCSqGSIb3DQEBCwUAA4IBAQA+7A1aJLPzItEVyCx8JSl2
+# qB1dHC06GsTvMGHXfgtg/cM9D8Svi/3vKt8gVTew4fbRknUPUbRupY5a4l4kgU4Q
+# pO4/cY5jDhNLrddfRHnzNhQGivecRk5c/5CxGwcOkRX7uq+1UcKNJK4kxscnKqEp
+# KBo6cSgCPC6Ro8AlEeKcFEehemhor5unXCBc2XGxDI+7qPjFEmifz0DLQESlE/Dm
+# ZAwlCEIysjaKJAL+L3J+HNdJRZboWR3p+nRka7LrZkPas7CM1ekN3fYBIM6ZMWM9
+# CBoYs4GbT8aTEAb8B4H6i9r5gkn3Ym6hU/oSlBiFLpKR6mhsRDKyZqHnGKSaZFHv
+# MIIFMTCCBBmgAwIBAgIQCqEl1tYyG35B5AXaNpfCFTANBgkqhkiG9w0BAQsFADBl
+# MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3
+# d3cuZGlnaWNlcnQuY29tMSQwIgYDVQQDExtEaWdpQ2VydCBBc3N1cmVkIElEIFJv
+# b3QgQ0EwHhcNMTYwMTA3MTIwMDAwWhcNMzEwMTA3MTIwMDAwWjByMQswCQYDVQQG
+# EwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3d3cuZGlnaWNl
+# cnQuY29tMTEwLwYDVQQDEyhEaWdpQ2VydCBTSEEyIEFzc3VyZWQgSUQgVGltZXN0
+# YW1waW5nIENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvdAy7kvN
+# j3/dqbqCmcU5VChXtiNKxA4HRTNREH3Q+X1NaH7ntqD0jbOI5Je/YyGQmL8TvFfT
+# w+F+CNZqFAA49y4eO+7MpvYyWf5fZT/gm+vjRkcGGlV+Cyd+wKL1oODeIj8O/36V
+# +/OjuiI+GKwR5PCZA207hXwJ0+5dyJoLVOOoCXFr4M8iEA91z3FyTgqt30A6XLdR
+# 4aF5FMZNJCMwXbzsPGBqrC8HzP3w6kfZiFBe/WZuVmEnKYmEUeaC50ZQ/ZQqLKfk
+# dT66mA+Ef58xFNat1fJky3seBdCEGXIX8RcG7z3N1k3vBkL9olMqT4UdxB08r8/a
+# rBD13ays6Vb/kwIDAQABo4IBzjCCAcowHQYDVR0OBBYEFPS24SAd/imu0uRhpbKi
+# JbLIFzVuMB8GA1UdIwQYMBaAFEXroq/0ksuCMS1Ri6enIZ3zbcgPMBIGA1UdEwEB
+# /wQIMAYBAf8CAQAwDgYDVR0PAQH/BAQDAgGGMBMGA1UdJQQMMAoGCCsGAQUFBwMI
+# MHkGCCsGAQUFBwEBBG0wazAkBggrBgEFBQcwAYYYaHR0cDovL29jc3AuZGlnaWNl
+# cnQuY29tMEMGCCsGAQUFBzAChjdodHRwOi8vY2FjZXJ0cy5kaWdpY2VydC5jb20v
+# RGlnaUNlcnRBc3N1cmVkSURSb290Q0EuY3J0MIGBBgNVHR8EejB4MDqgOKA2hjRo
+# dHRwOi8vY3JsNC5kaWdpY2VydC5jb20vRGlnaUNlcnRBc3N1cmVkSURSb290Q0Eu
+# Y3JsMDqgOKA2hjRodHRwOi8vY3JsMy5kaWdpY2VydC5jb20vRGlnaUNlcnRBc3N1
+# cmVkSURSb290Q0EuY3JsMFAGA1UdIARJMEcwOAYKYIZIAYb9bAACBDAqMCgGCCsG
+# AQUFBwIBFhxodHRwczovL3d3dy5kaWdpY2VydC5jb20vQ1BTMAsGCWCGSAGG/WwH
+# ATANBgkqhkiG9w0BAQsFAAOCAQEAcZUS6VGHVmnN793afKpjerN4zwY3QITvS4S/
+# ys8DAv3Fp8MOIEIsr3fzKx8MIVoqtwU0HWqumfgnoma/Capg33akOpMP+LLR2HwZ
+# YuhegiUexLoceywh4tZbLBQ1QwRostt1AuByx5jWPGTlH0gQGF+JOGFNYkYkh2OM
+# kVIsrymJ5Xgf1gsUpYDXEkdws3XVk4WTfraSZ/tTYYmo9WuWwPRYaQ18yAGxuSh1
+# t5ljhSKMYcp5lH5Z/IwP42+1ASa2bKXuh1Eh5Fhgm7oMLSttosR+u8QlK0cCCHxJ
+# rhO24XxCQijGGFbPQTS2Zl22dHv1VjMiLyI2skuiSpXY9aaOUjCCBhUwggT9oAMC
+# AQICEAVFNrTiDqY894KJXUxQqqwwDQYJKoZIhvcNAQELBQAwcjELMAkGA1UEBhMC
+# VVMxFTATBgNVBAoTDERpZ2lDZXJ0IEluYzEZMBcGA1UECxMQd3d3LmRpZ2ljZXJ0
+# LmNvbTExMC8GA1UEAxMoRGlnaUNlcnQgU0hBMiBBc3N1cmVkIElEIENvZGUgU2ln
+# bmluZyBDQTAeFw0xOTA3MjIwMDAwMDBaFw0yMjA3MTMxMjAwMDBaMFIxCzAJBgNV
+# BAYTAkFVMREwDwYDVQQIEwhWaWN0b3JpYTESMBAGA1UEBxMJTWVsYm91cm5lMQ0w
+# CwYDVQQKEwROTmV0MQ0wCwYDVQQDEwROTmV0MIICIjANBgkqhkiG9w0BAQEFAAOC
+# Ag8AMIICCgKCAgEA0rX8eP8GoHreuoTd2jCrTHtqlIgpopoLpDKN1NwSWkkpuZyh
+# yIKUtEXfpK/PoJIJ3o5h8EULocJCN5ZwGAL50n1tsRric5MGBLpTanVDMmIGyO55
+# m1y1mKpkJ/orU3xnMNU1T+YPMdToSSt3fdw/ykwH99p8MB9+RW70iZPxRbuxiQfy
+# bflLlxn900dcRQJprpKM2SyY6Nk64dXVoNsGeKXD7p5tmR3ptkAFqVCVmJee3m9K
+# ZTCSnFMwARQvLelwssqC6Yn9j6CPoRHc1x1xpezQAc22E170aFE+2yQ1tw0OoQ1y
+# 8OTJPAqaKmWtK0AqzOIj+xLDi92+26qwMoG7VZVe2Ogl0kXT0Ant2e/VxZdN2mhd
+# TpvcpkpUT17mPUl43cW2ATlKA66UgAowHiiv6Su3DjIvSpuswdu9af9Ddkggb4GP
+# i8eknZeCFddKO+yStHOMcpiBbecZhpO2H8dEjQclu45eAcu4oneoOzJFkSUbsCZ+
+# riYUSciQnbIuigiYmrNPrNoPoOANIQcGISzndafZw0JPK2YnFIhSSNSSaI/5Bpo4
+# jaGeWSaLpduwSO3dqNVBhLkUzoOLw/0tDZa4HoKKJdRerKuKagbTFZC5vHyIRSnS
+# ka1Lnfic6uiTZ4rE9GbghlCjkZY2wmAyx+MerSK4nPEW7jkMo/59AAv2Q+0CAwEA
+# AaOCAcUwggHBMB8GA1UdIwQYMBaAFFrEuXsqCqOl6nEDwGD5LfZldQ5YMB0GA1Ud
+# DgQWBBQVK/QMceSNGNEnBoUhzTZaC9aEVTAOBgNVHQ8BAf8EBAMCB4AwEwYDVR0l
+# BAwwCgYIKwYBBQUHAwMwdwYDVR0fBHAwbjA1oDOgMYYvaHR0cDovL2NybDMuZGln
+# aWNlcnQuY29tL3NoYTItYXNzdXJlZC1jcy1nMS5jcmwwNaAzoDGGL2h0dHA6Ly9j
+# cmw0LmRpZ2ljZXJ0LmNvbS9zaGEyLWFzc3VyZWQtY3MtZzEuY3JsMEwGA1UdIARF
+# MEMwNwYJYIZIAYb9bAMBMCowKAYIKwYBBQUHAgEWHGh0dHBzOi8vd3d3LmRpZ2lj
+# ZXJ0LmNvbS9DUFMwCAYGZ4EMAQQBMIGEBggrBgEFBQcBAQR4MHYwJAYIKwYBBQUH
+# MAGGGGh0dHA6Ly9vY3NwLmRpZ2ljZXJ0LmNvbTBOBggrBgEFBQcwAoZCaHR0cDov
+# L2NhY2VydHMuZGlnaWNlcnQuY29tL0RpZ2lDZXJ0U0hBMkFzc3VyZWRJRENvZGVT
+# aWduaW5nQ0EuY3J0MAwGA1UdEwEB/wQCMAAwDQYJKoZIhvcNAQELBQADggEBAN0A
+# vr3VdFQ+3UjAK4Q0rDqfWx9MPsAATMPrOGmtStXolY8XMnjP9iBmnYs9hkOeHibX
+# r9QjY72k0yHKQbeaDUgInjmFMZm9Fj5wzxpNX+KgbeUAMlDZn0frbhIp8t/6r91P
+# YKro2//2zKPY8bHQ86e4seDPhzZUZVNtzcN2FIdGmKSOKxKX0k9SOkWOqVP9RNZ+
+# Augy+/8PinXsQ5lqtPjKQCATjvMltYlLRyPc7WWdKEM7teT4f9y/3zZ+vBZzZqSt
+# E6i/Z15nW7D8FwnoCcLJf6BmQAK1613RKaNCA4JSL+BVlRIiRaFLEmaPnARXQh0m
+# Mokutp9pzli0pdaUO4wxggVtMIIFaQIBATCBhjByMQswCQYDVQQGEwJVUzEVMBMG
+# A1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3d3cuZGlnaWNlcnQuY29tMTEw
+# LwYDVQQDEyhEaWdpQ2VydCBTSEEyIEFzc3VyZWQgSUQgQ29kZSBTaWduaW5nIENB
+# AhAFRTa04g6mPPeCiV1MUKqsMA0GCWCGSAFlAwQCAQUAoIGEMBgGCisGAQQBgjcC
+# AQwxCjAIoAKAAKECgAAwGQYJKoZIhvcNAQkDMQwGCisGAQQBgjcCAQQwHAYKKwYB
+# BAGCNwIBCzEOMAwGCisGAQQBgjcCARUwLwYJKoZIhvcNAQkEMSIEIM+0ObkmWaT3
+# SDpJdNl96QCz1vWK88ZzGRdwJOD40lqeMA0GCSqGSIb3DQEBAQUABIICACuFbCYh
+# WMiCTPzRVKUmFDX4dged6iJ75oQJhzmoDxl4BsX8NdPVBZ99lLo8MBOugbsCGB1q
+# PGvw1+yLKHMjni6ia1dJWlzTcD/DmxHdXeFQp+tpsVxdkOlTQ3q/MXLft/+844wR
+# l573yXLou8cwzx4mn0FzrsANSlpH1zQXDW1umtdVFBsNKkVUnLdAVGKtKbPkwep7
+# k5MmeQmCo4LKSduNnv+HXPu9CvlP+28sIGYx8/WMWgR8nspvPr/xYtAwQdgBUa50
+# lZxdb8X4UDFbDYAdA4kYvNRx1x5SBwKN0eDsaWzjnNaENzZFBpDfPySAX6hK/3oE
+# OgOYkh+q7/m1mgWsQ9fa+ITaeLxJgvvI2CoGN/BRnQKnSbkuXeVlKjocKUU0eTEQ
+# cIcyOSNbxDUBjzdnhfkt/xKzOkiTGmWQ6hnds3lkUPhi2W39RUbIaUMhURl8ghBu
+# U3QXNa7cC6Z8YEAE949b6Sl8spzO2IDGrlwG4+lRK01J6pGrlJ+ezTD0w5d7oUPN
+# xJmnwE3ClcHmHJ5s1XPa2NUb8fEz2gU7TCdIx8r6Mn/RPJtPd9sNOPgTEfmJ9Ka+
+# g6cUnresvv3efdudUrNaSk88BOie6FWVIk5HYpzlvZUnw+jQqeNmkl/WGm/edcyh
+# Bmppa/nzTi+/JjcM5YwJ3QbjIz6tIbLKrDm3oYICMDCCAiwGCSqGSIb3DQEJBjGC
+# Ah0wggIZAgEBMIGGMHIxCzAJBgNVBAYTAlVTMRUwEwYDVQQKEwxEaWdpQ2VydCBJ
+# bmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xMTAvBgNVBAMTKERpZ2lDZXJ0
+# IFNIQTIgQXNzdXJlZCBJRCBUaW1lc3RhbXBpbmcgQ0ECEA1CSuC+Ooj/YEAhzhQA
+# 8N0wDQYJYIZIAWUDBAIBBQCgaTAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwG
+# CSqGSIb3DQEJBTEPFw0yMTA2MTYwOTExNThaMC8GCSqGSIb3DQEJBDEiBCAawTzb
+# CkauetwoEtmwCFeA78RWAZ6/IpNQBmsrMPJySTANBgkqhkiG9w0BAQEFAASCAQBg
+# yzJvwyJaG6D+ARBsTh1/kYBAzeXCa3jANnlZxfZ/5AnoHpk94pOlr4e74xX7PnMv
+# y4mvap+N6q9V3fEyhfy+tGgVw0uKhT0m+E3fzFJc4X83ehAOV/XPnACnMID2EZxF
+# Q0jJ/OTopBXEkT3tRBctWdcee77GGL3SmnNRHs2ok0UFt26M3r1LGmtGTv9tOJM/
+# tHxsNCVLOwf7wqKqjaB0AG5i16eMDNyms6DUc0yqRDDeIhbjiZtIg4tcSoRLOZkl
+# r5+fglxIsweabFPdz8Nw7tcdxYvy6OSRfJgm+aApzvdnrbhfrjPi69zc+WcABVkj
+# nU4KfMrCDaXj0afMoaXu
+# SIG # End signature block

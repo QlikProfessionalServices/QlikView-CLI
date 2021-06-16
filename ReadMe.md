@@ -17,7 +17,7 @@ QlikView-CLI is a PowerShell module that provides a command line interface for m
 As the Module is procedurally generated and provides PowerShell functions to interface with the QlikView QMSAPIs. 
 These functions can be used for viewing and editing configuration settings, as well as managing tasks and other features available through the APIs.
 
-[IQMS4 Methods](https://help.qlik.com/en-US/qlikview-developer/April2020/APIs/QMS+API/html/Methods_T_PIX_Services_V12_Api4_IQMS4.htm)
+[IQMS6 Methods](https://help.qlik.com/en-US/qlikview-developer/csh/QMSAPIref/Content/PIX.Services.V12.Api6.IQMS6.htm#)
 
 The Mapping between QMSAPI Methods and the PowerShell Commandlets can be found here: 
 
@@ -51,8 +51,10 @@ or run `Import-Module .\QlikView-CLI` to import it manually.
 - IQMS2: QlikView 12.10
 - IQMS3: QlikView 12.30 (November 2018)
 - IQMS4: QlikView 12.40 (April 2019)
+- IQMS5: QlikView 12.50 (April 2020)
+- IQMS6: QlikView 12.60 (May 2021)
 
-[The QlikView Management Service API](https://help.qlik.com/en-US/qlikview-developer/April2020/APIs/QMS+API/html/7b30b3a1-77da-4bbe-bdc2-1320dfa4f726.htm)
+[The QlikView Management Service API](https://help.qlik.com/en-US/qlikview-developer/csh/Subsystems/QMSAPIref/Content/Home.htm)
 
 
 If -PassThru is ommited from the Connect-QlikView command, the connection established will be a Global Connection that will be used for all subsequent API calls.
