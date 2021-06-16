@@ -6,6 +6,7 @@
   <xs:import schemaLocation="http://qvserver01:4799/QMS/Service?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.CALs" />
   <xs:import schemaLocation="http://qvserver01:4799/QMS/Service?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.Enums" />
   <xs:import schemaLocation="http://qvserver01:4799/QMS/Service?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.Triggers" />
+  <xs:import schemaLocation="http://qvserver01:4799/QMS/Service?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/PIX" />
   <xs:complexType name="DocumentNode">
     <xs:sequence>
       <xs:element minOccurs="0" name="FolderID" type="ser:guid" />
@@ -159,6 +160,7 @@
       <xs:element minOccurs="0" name="Attributes" nillable="true" type="tns:ArrayOfDocumentAttribute" />
       <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastAcceptedReloadTime" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SourceName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -942,6 +944,7 @@
       <xs:element minOccurs="0" name="Attributes" nillable="true" type="tns:ArrayOfDocumentAttribute" />
       <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastAcceptedReloadTime" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DocumentTask.TaskDocumentInfo" nillable="true" type="tns:DocumentTask.TaskDocumentInfo" />
@@ -1742,8 +1745,12 @@
     <xs:sequence>
       <xs:element xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="CPUAffinity" nillable="true" type="q22:ArrayOfboolean" />
       <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.Enums" minOccurs="0" name="CPUPriority" type="q23:CPUPriority" />
+      <xs:element minOccurs="0" name="MaxCloudDist" type="xs:int" />
       <xs:element minOccurs="0" name="MaxQvbAdmin" type="xs:int" />
       <xs:element minOccurs="0" name="MaxQvbDist" type="xs:int" />
+      <xs:element minOccurs="0" name="PreLoadDocAdminInterval" type="xs:int" />
+      <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/PIX" minOccurs="0" name="PreLoadDocAdminSchedule" type="q24:eBackupSchedule" />
+      <xs:element minOccurs="0" name="PreLoadDocAdminTime" type="xs:dateTime" />
       <xs:element minOccurs="0" name="SectionAccessPassword" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SectionAccessUsername" nillable="true" type="xs:string" />
     </xs:sequence>
@@ -1753,7 +1760,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="AlertHtmlBody" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="AlertHtmlSubject" nillable="true" type="xs:string" />
-      <xs:element xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AlertMailAddresses" nillable="true" type="q24:ArrayOfstring" />
+      <xs:element xmlns:q25="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AlertMailAddresses" nillable="true" type="q25:ArrayOfstring" />
       <xs:element minOccurs="0" name="AlertPlainBody" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="AlertPlainSubject" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="AttachmentHtmlBody" nillable="true" type="xs:string" />
@@ -1773,8 +1780,9 @@
       <xs:element minOccurs="0" name="ClusterInfo" nillable="true" type="tns:ArrayOfQDSSettings.QDSClusterInfo" />
       <xs:element minOccurs="0" name="ClusterName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="DisableTaskTriggersForDocAdmins" type="xs:boolean" />
-      <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.Enums" minOccurs="0" name="LogLevel" type="q25:LogLevel" />
+      <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.Enums" minOccurs="0" name="LogLevel" type="q26:LogLevel" />
       <xs:element minOccurs="0" name="SelectedDscID" type="ser:guid" />
+      <xs:element minOccurs="0" name="SelectedPDFPrinter" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ShowAlerts" type="xs:boolean" />
       <xs:element minOccurs="0" name="SourceFolders" nillable="true" type="tns:ArrayOfDocumentFolder" />
     </xs:sequence>
@@ -1791,7 +1799,8 @@
       <xs:element minOccurs="0" name="DedicatedQvbDist" type="xs:int" />
       <xs:element minOccurs="0" name="DedicatedTaskGraceTimeMinutes" type="xs:int" />
       <xs:element minOccurs="0" name="DedicatedTaskRunAlone" type="xs:boolean" />
-      <xs:element xmlns:q26="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DistributionGroups" nillable="true" type="q26:ArrayOfstring" />
+      <xs:element xmlns:q27="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DistributionGroups" nillable="true" type="q27:ArrayOfstring" />
+      <xs:element minOccurs="0" name="MaxCloudDist" type="xs:int" />
       <xs:element minOccurs="0" name="MaxQvbAdmin" type="xs:int" />
       <xs:element minOccurs="0" name="MaxQvbDist" type="xs:int" />
       <xs:element minOccurs="0" name="Url" nillable="true" type="xs:anyURI" />
@@ -1829,7 +1838,7 @@
       <xs:element minOccurs="0" name="ID" type="ser:guid" />
       <xs:element minOccurs="0" name="MemberStatusDetails" nillable="true" type="tns:ArrayOfServiceStatusDetail" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.Enums" minOccurs="0" name="ServiceComposition" type="q27:ServiceComposition" />
+      <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.Enums" minOccurs="0" name="ServiceComposition" type="q28:ServiceComposition" />
       <xs:element minOccurs="0" name="ServiceType" type="tns:ServiceTypes" />
       <xs:element minOccurs="0" name="Url" nillable="true" type="xs:anyURI" />
     </xs:sequence>
@@ -1843,11 +1852,11 @@
   <xs:element name="ArrayOfServiceStatusDetail" nillable="true" type="tns:ArrayOfServiceStatusDetail" />
   <xs:complexType name="ServiceStatusDetail">
     <xs:sequence>
-      <xs:element xmlns:q28="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Groups" nillable="true" type="q28:ArrayOfstring" />
+      <xs:element xmlns:q29="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Groups" nillable="true" type="q29:ArrayOfstring" />
       <xs:element minOccurs="0" name="Host" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ID" type="ser:guid" />
-      <xs:element xmlns:q29="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Message" nillable="true" type="q29:ArrayOfstring" />
-      <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.Enums" minOccurs="0" name="Status" type="q30:ServiceStatusFlag" />
+      <xs:element xmlns:q30="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Message" nillable="true" type="q30:ArrayOfstring" />
+      <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.Enums" minOccurs="0" name="Status" type="q31:ServiceStatusFlag" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ServiceStatusDetail" nillable="true" type="tns:ServiceStatusDetail" />
@@ -1879,13 +1888,13 @@
   <xs:element name="TaskStatusNodeType" nillable="true" type="tns:TaskStatusNodeType" />
   <xs:complexType name="TaskStatusFilter">
     <xs:sequence>
-      <xs:element xmlns:q31="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Categories" nillable="true" type="q31:ArrayOfstring" />
-      <xs:element xmlns:q32="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DistributionGroups" nillable="true" type="q32:ArrayOfstring" />
-      <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.Enums" minOccurs="0" name="EnabledState" type="q33:EnabledState" />
+      <xs:element xmlns:q32="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Categories" nillable="true" type="q32:ArrayOfstring" />
+      <xs:element xmlns:q33="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DistributionGroups" nillable="true" type="q33:ArrayOfstring" />
+      <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.Enums" minOccurs="0" name="EnabledState" type="q34:EnabledState" />
       <xs:element minOccurs="0" name="LastExecution" nillable="true" type="tns:TaskStatusFilter.LastExecutionInterval" />
-      <xs:element xmlns:q34="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="QDSIds" nillable="true" type="q34:ArrayOfguid" />
+      <xs:element xmlns:q35="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="QDSIds" nillable="true" type="q35:ArrayOfguid" />
       <xs:element minOccurs="0" name="Schedule" nillable="true" type="tns:TaskStatusFilter.ScheduleInterval" />
-      <xs:element xmlns:q35="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="TaskIds" nillable="true" type="q35:ArrayOfguid" />
+      <xs:element xmlns:q36="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="TaskIds" nillable="true" type="q36:ArrayOfguid" />
       <xs:element minOccurs="0" name="TaskName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TaskStatuses" nillable="true" type="tns:ArrayOfTaskStatusValue" />
       <xs:element minOccurs="0" name="TaskTypes" nillable="true" type="tns:ArrayOfTaskType" />
@@ -2111,9 +2120,9 @@
       <xs:element minOccurs="0" name="Columns" nillable="true" type="tns:ArrayOfSectionAccessTable.SectionAccessColumn" />
       <xs:element minOccurs="0" name="ID" type="ser:guid" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element xmlns:q36="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Roles" nillable="true" type="q36:ArrayOfstring" />
+      <xs:element xmlns:q37="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Roles" nillable="true" type="q37:ArrayOfstring" />
       <xs:element minOccurs="0" name="Rows" nillable="true" type="tns:ArrayOfSectionAccessTable.SectionAccessRow" />
-      <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.Enums" minOccurs="0" name="Scope" type="q37:SectionAccessScope" />
+      <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.Enums" minOccurs="0" name="Scope" type="q38:SectionAccessScope" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SectionAccessTable" nillable="true" type="tns:SectionAccessTable" />
@@ -2242,7 +2251,7 @@
   <xs:element name="QDSDocumentSessionConfiguration" nillable="true" type="tns:QDSDocumentSessionConfiguration" />
   <xs:complexType name="QDSDocumentSession">
     <xs:sequence>
-      <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.Enums" minOccurs="0" name="OpenDocumentResult" type="q38:DocumentState" />
+      <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.Enums" minOccurs="0" name="OpenDocumentResult" type="q39:DocumentState" />
       <xs:element minOccurs="0" name="QDSID" type="ser:guid" />
       <xs:element minOccurs="0" name="SessionID" type="ser:guid" />
     </xs:sequence>
@@ -2313,7 +2322,7 @@
   <xs:element name="QVPRBackupSchedule" nillable="true" type="tns:QVPRBackupSchedule" />
   <xs:complexType name="DirectoryServiceConnectorAPISettings">
     <xs:sequence>
-      <xs:element xmlns:q39="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AllUrls" nillable="true" type="q39:ArrayOfanyURI" />
+      <xs:element xmlns:q40="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AllUrls" nillable="true" type="q40:ArrayOfanyURI" />
       <xs:element minOccurs="0" name="Id" type="ser:guid" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
     </xs:sequence>

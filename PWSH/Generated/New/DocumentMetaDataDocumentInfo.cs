@@ -15,6 +15,8 @@ namespace QlikView_CLI.PWSH
         [Parameter]
         public System.String Description;
         [Parameter]
+        public System.String Lastacceptedreloadtime;
+        [Parameter]
         public System.String Sourcename;
 
 
@@ -26,7 +28,7 @@ namespace QlikView_CLI.PWSH
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            documentmetadatadocumentinfo = new QlikView_CLI.QMSAPI.DocumentMetaData.DocumentMetaDataDocumentInfo() { Attributes = Attributes, Category = Category, Description = Description, SourceName = Sourcename };
+            documentmetadatadocumentinfo = new QlikView_CLI.QMSAPI.DocumentMetaData.DocumentMetaDataDocumentInfo() { Attributes = Attributes, Category = Category, Description = Description, LastAcceptedReloadTime = Lastacceptedreloadtime, SourceName = Sourcename };
         }
 
         protected override void EndProcessing()

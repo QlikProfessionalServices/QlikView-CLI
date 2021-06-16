@@ -10,7 +10,8 @@
       <xsd:import schemaLocation="http://qvserver01:4799/QMS/Service?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.CALs" />
       <xsd:import schemaLocation="http://qvserver01:4799/QMS/Service?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.Enums" />
       <xsd:import schemaLocation="http://qvserver01:4799/QMS/Service?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.Triggers" />
-      <xsd:import schemaLocation="http://qvserver01:4799/QMS/Service?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.Document" />
+      <xsd:import schemaLocation="http://qvserver01:4799/QMS/Service?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/PIX" />
+      <xsd:import schemaLocation="http://qvserver01:4799/QMS/Service?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.Document" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IQMS_RestartQVS_InputMessage">

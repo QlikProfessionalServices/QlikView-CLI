@@ -11,10 +11,10 @@
       <xsd:import schemaLocation="http://qvserver01:4799/QMS/Service?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.CALs" />
       <xsd:import schemaLocation="http://qvserver01:4799/QMS/Service?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.Enums" />
       <xsd:import schemaLocation="http://qvserver01:4799/QMS/Service?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.Triggers" />
-      <xsd:import schemaLocation="http://qvserver01:4799/QMS/Service?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.Document" />
-      <xsd:import schemaLocation="http://qvserver01:4799/QMS/Service?xsd=xsd9" namespace="http://ws.qliktech.com/QMS/12/" />
-      <xsd:import schemaLocation="http://qvserver01:4799/QMS/Service?xsd=xsd10" namespace="http://ws.qliktech.com/QMS/12/2/" />
-      <xsd:import schemaLocation="http://qvserver01:4799/QMS/Service?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/PIX" />
+      <xsd:import schemaLocation="http://qvserver01:4799/QMS/Service?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/PIX" />
+      <xsd:import schemaLocation="http://qvserver01:4799/QMS/Service?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/PIX.QMSAPI.DataObjects.Document" />
+      <xsd:import schemaLocation="http://qvserver01:4799/QMS/Service?xsd=xsd10" namespace="http://ws.qliktech.com/QMS/12/" />
+      <xsd:import schemaLocation="http://qvserver01:4799/QMS/Service?xsd=xsd11" namespace="http://ws.qliktech.com/QMS/12/2/" />
       <xsd:import schemaLocation="http://qvserver01:4799/QMS/Service?xsd=xsd12" namespace="http://ws.qliktech.com/QMS/12/3/" />
     </xsd:schema>
   </wsdl:types>

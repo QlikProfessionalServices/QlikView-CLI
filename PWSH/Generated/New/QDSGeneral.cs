@@ -21,6 +21,8 @@ namespace QlikView_CLI.PWSH
         [Parameter]
         public System.Guid Selecteddscid;
         [Parameter]
+        public System.String Selectedpdfprinter;
+        [Parameter]
         public System.Boolean Showalerts = new System.Boolean();
         [Parameter]
         public List<QlikView_CLI.QMSAPI.DocumentFolder> Sourcefolders = new List<QlikView_CLI.QMSAPI.DocumentFolder>();
@@ -34,7 +36,7 @@ namespace QlikView_CLI.PWSH
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            qdsgeneral = new QlikView_CLI.QMSAPI.QDSSettings.QDSGeneral() { ApplicationDataFolder = Applicationdatafolder, ClusterInfo = Clusterinfo, ClusterName = Clustername, DisableTaskTriggersForDocAdmins = Disabletasktriggersfordocadmins, LogLevel = Loglevel, SelectedDscID = Selecteddscid, ShowAlerts = Showalerts, SourceFolders = Sourcefolders };
+            qdsgeneral = new QlikView_CLI.QMSAPI.QDSSettings.QDSGeneral() { ApplicationDataFolder = Applicationdatafolder, ClusterInfo = Clusterinfo, ClusterName = Clustername, DisableTaskTriggersForDocAdmins = Disabletasktriggersfordocadmins, LogLevel = Loglevel, SelectedDscID = Selecteddscid, SelectedPDFPrinter = Selectedpdfprinter, ShowAlerts = Showalerts, SourceFolders = Sourcefolders };
         }
 
         protected override void EndProcessing()

@@ -14,6 +14,8 @@ namespace QlikView_CLI.PWSH
         public System.String Category;
         [Parameter]
         public System.String Description;
+        [Parameter]
+        public System.String Lastacceptedreloadtime;
 
 
         protected override void BeginProcessing()
@@ -24,7 +26,7 @@ namespace QlikView_CLI.PWSH
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            taskdocumentinfo = new QlikView_CLI.QMSAPI.DocumentTask.TaskDocumentInfo() { Attributes = Attributes, Category = Category, Description = Description };
+            taskdocumentinfo = new QlikView_CLI.QMSAPI.DocumentTask.TaskDocumentInfo() { Attributes = Attributes, Category = Category, Description = Description, LastAcceptedReloadTime = Lastacceptedreloadtime };
         }
 
         protected override void EndProcessing()

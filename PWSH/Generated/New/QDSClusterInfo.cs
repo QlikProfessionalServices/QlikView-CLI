@@ -17,6 +17,8 @@ namespace QlikView_CLI.PWSH
         [Parameter]
         public List<System.String> Distributiongroups = new List<System.String>();
         [Parameter]
+        public System.Int32 Maxclouddist = new System.Int32();
+        [Parameter]
         public System.Int32 Maxqvbadmin = new System.Int32();
         [Parameter]
         public System.Int32 Maxqvbdist = new System.Int32();
@@ -32,7 +34,7 @@ namespace QlikView_CLI.PWSH
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            qdsclusterinfo = new QlikView_CLI.QMSAPI.QDSSettings.QDSClusterInfo() { DedicatedQvbDist = Dedicatedqvbdist, DedicatedTaskGraceTimeMinutes = Dedicatedtaskgracetimeminutes, DedicatedTaskRunAlone = Dedicatedtaskrunalone, DistributionGroups = Distributiongroups, MaxQvbAdmin = Maxqvbadmin, MaxQvbDist = Maxqvbdist, Url = Url };
+            qdsclusterinfo = new QlikView_CLI.QMSAPI.QDSSettings.QDSClusterInfo() { DedicatedQvbDist = Dedicatedqvbdist, DedicatedTaskGraceTimeMinutes = Dedicatedtaskgracetimeminutes, DedicatedTaskRunAlone = Dedicatedtaskrunalone, DistributionGroups = Distributiongroups, MaxCloudDist = Maxclouddist, MaxQvbAdmin = Maxqvbadmin, MaxQvbDist = Maxqvbdist, Url = Url };
         }
 
         protected override void EndProcessing()
