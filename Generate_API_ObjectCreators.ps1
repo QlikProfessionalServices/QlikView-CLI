@@ -1,4 +1,4 @@
-<#	
+<#
 	.NOTES
 	===========================================================================
 	 Created on:   	2020-10-16 10:30 AM
@@ -13,7 +13,7 @@
 $QlikViewCLIAssembly = "$($PWD.Path)\bin\Release\QlikView-CLI.dll"
 
 [System.IO.DirectoryInfo]$OutputDirectory = "$($PWD.Path)\PWSH\Generated"
-$BaseQMSAPIURL = "https://help.qlik.com/en-US/qlikview-developer/April2020/APIs/QMS+API/html/"
+$BaseQMSAPIURL = "https://help.qlik.com/en-US/qlikview-developer/csh2/QMSAPIref/Content/"
 
 #Import the Generated Assembly
 Import-Module $QlikViewCLIAssembly
@@ -52,16 +52,16 @@ foreach ($QVObject in $QVObjects)
 					Name = $QVObjProperty.Name
 					Title = $PropteryTitle
 				}) | Out-Null
-			
+
 			#Build the Property Parameter
 			$SB = [System.Text.StringBuilder]::new()
-			
+
 			#Add the Parameter Header
 			$SB.Append("`t[Parameter]`n") | out-null
-			
+
 			#Set the Scope
 			$SB.Append("`tpublic ") | out-null
-			
+
 			#Set the Type
 			if ($QVObjProperty.PropertyType.Name -eq 'List`1')
 			{
@@ -75,10 +75,10 @@ foreach ($QVObject in $QVObjects)
 			{
 				$SB.Append("$($QVObjProperty.PropertyType.FullName.Replace("+", ".")) ") | out-null
 			}
-			
+
 			#Set the Property name
 			$SB.Append("$($PropteryTitle)") | out-null
-			
+
 			#Set the Default Value (if)
 			if ($QVObjProperty.PropertyType.FullName -eq "System.Guid" -and !($QVObjProperty.Name -in $Services))
 			{
@@ -133,7 +133,7 @@ foreach ($QVObject in $QVObjects)
         {
 private $($QVObject.FullName.Replace("+", ".")) $($QVObject.Name.ToLower());
 $QVObjProperties
-        
+
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
@@ -154,60 +154,62 @@ $QVObjProperties
         }
     }
     }
-"@ | Out-File ".\PWSH\Generated\New\$($QVObject.Name).cs"
-	
+"@ | Out-File ".\PWSH\Generated\New\$($QVObject.Name).cs" -Encoding utf8
+
 	#Add to Mapping for Documentation
 	$CMDLetMap = @{
 		CMDLet = "New-QV$($QVObject.Name)"
-		ObjName = $QVObject.FullName.Substring($QVModule.length + 1) -replace "\+", "_"
+		ObjName = $QVObject.FullName.Substring($QVModule.length + 1) -replace "\+", "."
 		Type = $($QVObject.Name)
 	}
 	$CmdLetMapping.Add($CMDLetMap) | out-null
-	
+
 }
+
 #$CmdLetMapping|sort|%{"- $_"}|clip
 Write-host "Checking QMSAPI Documentation URLs ========================"
 $MDBody = $CmdLetMapping | ForEach-Object{
 	$CmdMap = $_
 	$State = $true
+    Write-host "Testing URIs: $($CmdMap.ObjName)"
 	try
 	{
-		$URI = "$($BaseQMSAPIURL)T_PIX_QMSAPI_DataObjects_$($CmdMap.ObjName).htm"
+		$URI = "$($BaseQMSAPIURL)PIX.QMSAPI.DataObjects.$($CmdMap.ObjName).htm"
 		$R = Invoke-RestMethod $URI
 	}
 	catch
 	{
 		try
 		{
-			$URI = "$($BaseQMSAPIURL)T_PIX_QMSAPI_DataObjects_CALs_$($CmdMap.ObjName).htm"
+			$URI = "$($BaseQMSAPIURL)PIX.QMSAPI.DataObjects.CALs.$($CmdMap.ObjName).htm"
 			$R = Invoke-RestMethod $URI
 		}
 		catch
 		{
 			try
 			{
-				$URI = "$($BaseQMSAPIURL)T_PIX_QMSAPI_DataObjects_Document_$($CmdMap.ObjName).htm"
+				$URI = "$($BaseQMSAPIURL)PIX.QMSAPI.DataObjects.Document.$($CmdMap.ObjName).htm"
 				$R = Invoke-RestMethod $URI
 			}
 			catch
 			{
 				try
 				{
-					$URI = "$($BaseQMSAPIURL)T_PIX_QMSAPI_DataObjects_Enums_$($CmdMap.ObjName).htm"
+					$URI = "$($BaseQMSAPIURL)PIX.QMSAPI.DataObjects.Enums.$($CmdMap.ObjName).htm"
 					$R = Invoke-RestMethod $URI
 				}
 				catch
 				{
 					try
 					{
-						$URI = "$($BaseQMSAPIURL)T_PIX_QMSAPI_DataObjects_Triggers_$($CmdMap.ObjName).htm"
+						$URI = "$($BaseQMSAPIURL)PIX.QMSAPI.DataObjects.Triggers.$($CmdMap.ObjName).htm"
 						$R = Invoke-RestMethod $URI
 					}
 					catch
 					{
 						try
 						{
-							$URI = "$($BaseQMSAPIURL)T_PIX_$($CmdMap.ObjName).htm"
+							$URI = "$($BaseQMSAPIURL)PIX.$($CmdMap.ObjName).htm"
 							$R = Invoke-RestMethod $URI
 						}
 						catch
@@ -220,23 +222,27 @@ $MDBody = $CmdLetMapping | ForEach-Object{
 			}
 		}
 	}
-	
-	
+
+
 	if ($State -eq $true)
 	{
-		"- [$($CmdMap.Type)]($($URI)) = [$($CmdMap.CMDLet)]($("$($OutputDirectory.ToString())/New/$($CmdMap.Type).cs" -replace "\\", "/"))"
+		"- [$($CmdMap.Type)]($($URI)) = [$($CmdMap.CMDLet)]($($(Resolve-Path "$($OutputDirectory.ToString())/New/$($CmdMap.Type).cs" -Relative) -replace "\\", "/"))"
 	}
 	else
 	{
-		"- $($CmdMap.Type) = [$($CmdMap.CMDLet)]($("$($OutputDirectory.ToString())/New/$($CmdMap.Type).cs" -replace "\\", "/"))"
+		"- $($CmdMap.Type) = [$($CmdMap.CMDLet)]($($(Resolve-Path "$($OutputDirectory.ToString())/New/$($CmdMap.Type).cs" -Relative) -replace "\\", "/"))"
 	}
 }
 "
 `### Method to Cmdlet Mapping`n`n
 $($MDBody -join "`n`n")
-" | out-file .\QMSAPI_DataObjects.md
+" | out-file .\QMSAPI_DataObjects.md -Encoding utf8
 
 if ($Null -ne $(get-command dotnet-format))
 {
 	& dotnet-format -v diag --folder .\
+}
+
+Get-ChildItem ".\PWSH\Generated\New" | ForEach-Object{
+	$(Get-Content $_.fullname) | out-file $_.fullname -Encoding utf8BOM
 }

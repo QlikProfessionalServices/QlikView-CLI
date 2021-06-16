@@ -1,4 +1,4 @@
-﻿<#	
+﻿<#
 	.NOTES
 	===========================================================================
 	 Created on:   	2020-10-16 10:30 AM
@@ -12,7 +12,8 @@
 
 #First Update the QMSAPI and generate the Assembly. (Stage 1)
 $QlikViewCLIAssembly = "$($PWD.Path)\bin\Release\QlikView-CLI.dll"
-$BaseQMSAPIURL = "https://help.qlik.com/en-US/qlikview-developer/April2020/APIs/QMS+API/html/"
+$BaseQMSAPIURL = "https://help.qlik.com/en-US/qlikview-developer/csh2/QMSAPIref/Content/"
+$QVVersion = "12"
 
 [System.IO.DirectoryInfo]$OutputDirectory = "$($PWD.Path)\PWSH\Generated"
 #Import the Generated Assembly
@@ -21,13 +22,17 @@ Import-Module $QlikViewCLIAssembly
 $TextInfo = (Get-Culture).TextInfo
 $Services = "dscID", "qdsID", "qvsID", "qvwsID"
 
+$QMSClients = [AppDomain]::CurrentDomain.GetAssemblies().GetTypes()  | Where-Object {$_.NameSpace -eq 'QlikView_CLI.QMSAPI' -and $_.Name -like "QMS*Client"}|select -Property @{Name = "Version";E={$_.name -replace "QMS","" -replace "Client","" }},@{Name = "Object";E={$_}}
+$QMSClientLatest = $QMSClients|Sort-Object -Property version|Select-Object -Last 1
+
 #Create a dummyclient
 $BasicHttpBinding = [System.ServiceModel.BasicHttpBinding]::new()
-$Client = [QlikView_CLI.QMSAPI.QMS4Client]::new($BasicHttpBinding, "http://localhost")
-#Get All of the Methods availiable on the Client 
+$Client = $QMSClientLatest.Object::new($BasicHttpBinding, "http://localhost")
+#Get All of the Methods availiable on the Client
 $ClientMethods = $Client | Get-Member -MemberType Methods
 $Overloaded = @{
 }
+
 
 #$ClientMethod = $ClientMethods|?{$_.name -eq "QVSNeedRestart" }
 #Process Each Method to extract the Required Overloads
@@ -51,7 +56,7 @@ foreach ($ClientMethod in $ClientMethods)
 				$AllFields = ($_ -split " "); $overloader.add($AllFields[($AllFields).Length - 1], ($AllFields[0 .. (($AllFields).Length - 2)] -join " "))
 			}
 			$OverloadFieldType = $OverloadFields[0] -split " "
-			
+
 			$ReturnType = $OverloadFieldType[0]
 			if ($ReturnType -eq "void")
 			{
@@ -61,10 +66,10 @@ foreach ($ClientMethod in $ClientMethods)
 			$Definition = [pscustomobject][ordered]@{
 				Name = $OverloadFieldType[1]
 				ReturnType = $ReturnType
-				
+
 				Input = $overloader
 			}
-			
+
 			$Definitions.Add($Definition) | out-null
 		}
 		$Overloaded.Add($ClientMethod.Name, $Definitions) | out-null
@@ -103,7 +108,7 @@ foreach ($Method in $Methods)
 		$MethodName = ($MethodNameParts[1 .. $($MethodNameParts.Length)]) -join ""
 	}
 	$MethodVerb = $MethodNameParts[0]
-	
+
 	if ($MethodVerb -eq "Remote")
 	{
 		$MethodVerb = $MethodNameParts[1]; $MethodName = ($MethodNameParts[0] + (($MethodNameParts[2 .. $($MethodNameParts.Length)]) -join ""))
@@ -228,12 +233,12 @@ foreach ($Method in $Methods)
 			$CMDLetType = ""
 		}
 	}
-	
+
 	Write-host "$($Method)"
 	$Definition = $Global:QVOverloads.$Method | Where-Object{
 		(!($_.name -like "IQMS*"))
 	}
-	
+
 	#region BeginBlock
 	$BeginBlock = ""
 	$ServiceParam = ""
@@ -249,7 +254,7 @@ if (dscID == null)
 }
 "@
 	}
-	
+
 	if ($Definition.Input.Keys -contains "qdsID")
 	{
 		$ServiceParam = "qdsID"
@@ -261,7 +266,7 @@ if (qdsID == null)
 }
 "@
 	}
-	
+
 	if ($Definition.Input.Keys -contains "qvsID")
 	{
 		$ServiceParam = "qvsID"
@@ -273,7 +278,7 @@ if (qvsID == null)
 }
 "@
 	}
-	
+
 	if ($Definition.Input.Keys -contains "qvwsID")
 	{
 		$ServiceParam = "qvwsID"
@@ -286,14 +291,14 @@ if (qvwsID == null)
 "@
 	}
 	#endregion BeginBlock
-	
+
 	#region Inputs
 	#
 	#public $(if (!$Definition.Input.$Key.StartsWith($QVModule)){$($TextInfo.ToTitleCase($Definition.Input.$Key.ToLower()))}else{$Definition.Input.$Key}) $($Key)"
 	$InputsLine = foreach ($Key in $Definition.Input.Keys)
 	{
-		
-		
+
+
 		If ($Key -in $Services)
 		{
 			$Key = $Key.Replace("Id", "ID")
@@ -303,13 +308,13 @@ if (qvwsID == null)
 		}
 		else
 		{
-			
+
 			if ($Definition.Input.$Key.Contains("[]"))
 			{
 				"
                 [Parameter]
                public $($Definition.Input.$Key.Replace("guid", "Guid").Replace("uri", "Uri").Replace('<ref> ', '')) $($TextInfo.ToTitleCase($Key));"
-				
+
 			}
 			else
 			{
@@ -332,15 +337,15 @@ if (qvwsID == null)
 		{
 			$Inputoverloads = ""
 		}
-		
+
 	}
 	else
 	{
 		$Inputoverloads = ""
 	}
-	
+
 	#endregion Inputs
-	
+
 	#region ReturnType
 	$ReturnTypeName = ""
 	if ($null -ne $Definition.ReturnType)
@@ -358,7 +363,7 @@ if (qvwsID == null)
 		{
 			$ReturnType = $Definition.ReturnType.Replace("uri", "Uri")
 		}
-		
+
 		if ($ReturnTypeName -eq "")
 		{
 			$ReturnTypeName = $($TextInfo.ToTitleCase($($ReturnType.split(".")[-1]).ToLower()))
@@ -367,9 +372,9 @@ if (qvwsID == null)
 		{
 			$ReturnTypeName = $($TextInfo.ToTitleCase($ReturnType.ToLower()))
 		}
-		
+
 		$ReturnTypeNameEQ = "$($ReturnTypeName) = "
-		
+
 		if ($ReturnType.StartsWith("System.Collections.Generic.List"))
 		{
 			$ReturnTypeLine = "private $($ReturnType) $($ReturnTypeName) = new $($ReturnType)();"
@@ -387,7 +392,7 @@ if (qvwsID == null)
 		$ReturnTypeNameEQ = ""
 	}
 	#endregion ReturnType
-	
+
 <#
     $Verb
     $MethodName
@@ -398,13 +403,13 @@ if (qvwsID == null)
     $ServiceParam
     $ServiceProp
     #>
-	
+
 	#region Code
 	###########
 	#Get the CMDLetType Name
 	$Verb = $CMDLetType.Split(".")[1]
 	$TextInfo = (Get-Culture).TextInfo
-	
+
 	$Snip = @"
     [Cmdlet($CMDLetType, "QV$MethodName")]
     public class $($Verb)QV$($MethodName) : PSClient
@@ -431,7 +436,7 @@ if (qvwsID == null)
             {
                 $(if ($ServiceParam -ne "")
 		{
-			
+
 			if ($Inputoverloads -ne "")
 			{
 				$Inputover = "obj,$Inputoverloads"
@@ -474,11 +479,11 @@ if (qvwsID == null)
     }
 
 "@
-	
-	
+
+
 	[System.IO.DirectoryInfo]$VerbDir = "$($OutputDirectory.FullName)\$(($CMDLetType.split("."))[1])"
 	$VerbDir.Create()
-	
+
 	#Add the Headers to the Function and save to file
 	@"
 using QlikView_CLI.QMSAPI;
@@ -493,7 +498,7 @@ namespace QlikView_CLI.PWSH
 }
 "@ | Out-File "$($VerbDir.FullName)\$($MethodName).cs" -Encoding utf8
 	$Code.Add($Snip) | Out-Null
-	
+
 	#Add to Mapping for Documentation
 	$CMDLetMap = @{
 		Method = $Method
@@ -508,7 +513,7 @@ namespace QlikView_CLI.PWSH
 
 $MDBody = $CmdLetMapping | ForEach-Object{
 	$CmdMap = $_
-	"- [$($CmdMap.Method)]($($BaseQMSAPIURL)M_PIX_Services_V12_Api4_IQMS4_$($CmdMap.Method).htm) = [$($CmdMap.CMDLet)]($("$($OutputDirectory.ToString())/$($CmdMap.Type)/$($CmdMap.CMDLetName).cs" -replace "\\", "/"))"
+	"- [$($CmdMap.Method)]($($BaseQMSAPIURL)PIX.Services.V$($QVVersion).Api$($QMSClientLatest.Version).IQMS$($QMSClientLatest.Version).$($CmdMap.Method).htm) = [$($CmdMap.CMDLet)]($($(Resolve-Path "$($OutputDirectory.ToString())/$($CmdMap.Type)/$($CmdMap.CMDLetName).cs" -Relative) -replace "\\", "/"))"
 }
 "
 `### Method to Cmdlet Mapping`n`n
