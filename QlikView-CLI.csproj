@@ -125,6 +125,12 @@
     <None Include="Connected Services\QMSAPI\Service172.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\QMSAPI\Service1726.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QMSAPI\Service1727.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\QMSAPI\Service19.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -165,6 +171,8 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\QMSAPI\Service81.wsdl" />
+    <None Include="Connected Services\QMSAPI\Service817.wsdl" />
+    <None Include="Connected Services\QMSAPI\Service818.wsdl" />
     <None Include="Connected Services\QMSAPI\Service82.wsdl" />
     <None Include="Connected Services\QMSAPI\Service9.xsd">
       <SubType>Designer</SubType>
@@ -612,7 +620,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_BuildVersioningStyle="None.None.YearMonthDayStamp.YearDayOfYearStamp" BuildVersion_StartDate="2000/1/1" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" BuildVersion_AssemblyInfoFilename="Properties\AssemblyInfo.cs" BuildVersion_UseGlobalSettings="True" />
+      <UserProperties BuildVersion_UseGlobalSettings="True" BuildVersion_AssemblyInfoFilename="Properties\AssemblyInfo.cs" BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_StartDate="2000/1/1" BuildVersion_BuildVersioningStyle="None.None.YearMonthDayStamp.YearDayOfYearStamp" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

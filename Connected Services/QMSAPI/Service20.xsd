@@ -11,6 +11,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="FolderID" type="ser:guid" />
       <xs:element minOccurs="0" name="ID" type="ser:guid" />
+      <xs:element minOccurs="0" name="IsDuplicateQVWApp" type="xs:boolean" />
       <xs:element minOccurs="0" name="IsOrphan" type="xs:boolean" />
       <xs:element minOccurs="0" name="IsSubFolder" type="xs:boolean" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
@@ -1767,6 +1768,7 @@
       <xs:element minOccurs="0" name="AttachmentHtmlSubject" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="AttachmentPlainBody" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="AttachmentPlainSubject" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IncludeWarnings" type="xs:boolean" />
       <xs:element minOccurs="0" name="NotifyHtmlBody" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="NotifyHtmlSubject" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="NotifyPlainBody" nillable="true" type="xs:string" />
