@@ -61,3 +61,33 @@ Remove-Item "$($TargetDir)\$($ProjectName)" -Recurse -Verbose -Force -ErrorActio
 Copy-Item -Path "$($ProjectDir)\$($ProjectName)" -Destination $TargetDir -Force -Verbose -Recurse
 Copy-Item -Path $TargetPath -Destination "$($TargetDir)$($ProjectName)\" -Force -Verbose
 $PSBoundParameters|Export-Clixml "$($TargetDir)\PostBuild.clixml"
+
+$DLL = Get-Item $TargetPath
+
+$CMDletCommand = (Import-Module $DLL.FullName -Passthru).ExportedCmdlets.Values.Name
+$FunctionNames = (Import-Module "$($ProjectDir)\$($ProjectName)\$($ProjectName).psm1" -Passthru).ExportedFunctions.Values.Name
+$MMPath = "$($DLL.Directory.FullName)\$($ProjectName)\$($DLL.BaseName).psd1"
+$paramNewModuleManifest = @{
+    Path = $MMPath
+    NestedModules = $DLL.Name
+	Author = "Marc Collins"
+	CompanyName = "Qlik Professional Services"
+	Copyright = "Copyright© $([datetime]::Now.Year), All rights reserved."
+	RootModule = "$($DLL.BaseName).psm1"
+	ModuleVersion = "$($Dll.VersionInfo.FileMajorPart).$($Dll.VersionInfo.FileMinorPart).$($Dll.VersionInfo.FileBuildPart)"
+	Description = "PowerShell module to interact with QlikView - APIs"
+	ProcessorArchitecture = 'None'
+	PowerShellVersion = "4.0"
+	RequiredModules = $RequiredModules
+	FileList = "$($DLL.Name)", "$($DLL.BaseName).psm1"
+	FunctionsToExport = $FunctionNames
+	VariablesToExport = ""
+	AliasesToExport = ""
+	CmdletsToExport = $CMDletCommand
+	Tags = "Qlik", "QlikView", "Qlik-View", "QlikView-CLI", "Qlik-API", "API"
+	ProjectUri = 'https://github.com/QlikProfessionalServices/QlikView-CLI'
+	ReleaseNotes = "https://github.com/QlikProfessionalServices/QlikView-CLI/releases/tag/$($DLL.VersionInfo.ProductVersion)"
+    LicenseUri = 'https://github.com/QlikProfessionalServices/QlikView-CLI/blob/main/LICENSE'
+}
+
+New-ModuleManifest @paramNewModuleManifest
