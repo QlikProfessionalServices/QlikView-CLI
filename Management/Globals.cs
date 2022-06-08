@@ -1,4 +1,4 @@
-﻿namespace QlikView_CLI.Management
+namespace QlikView_CLI.Management
 {
     internal class Globals
     {
