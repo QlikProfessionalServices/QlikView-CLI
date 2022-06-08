@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("QlikView-CLI")]
-[assembly: AssemblyDescription("QlikView PowerShell Module")]
+[assembly: AssemblyDescription("PowerShell module to interact with QlikView - APIs")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Qlik Professional Services")]
 [assembly: AssemblyProduct("QlikView-CLI")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCopyright("Copyright© 2022, All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.6.22158.16429")]
-[assembly: AssemblyFileVersion("1.6.22158.16008")]
+[assembly: AssemblyVersion("1.7.22159.3424")]
+[assembly: AssemblyFileVersion("1.7.22159.3424")]

@@ -17,7 +17,7 @@ QlikView-CLI is a PowerShell module that provides a command line interface for m
 As the Module is procedurally generated and provides PowerShell functions to interface with the QlikView QMSAPIs.
 These functions can be used for viewing and editing configuration settings, as well as managing tasks and other features available through the APIs.
 
-[IQMS6 Methods](https://help.qlik.com/en-US/qlikview-developer/csh/QMSAPIref/Content/PIX.Services.V12.Api6.IQMS6.htm#)
+[IQMS7 Methods](https://help.qlik.com/en-US/qlikview-developer/csh/QMSAPIref/Content/PIX.Services.V12.Api7.IQMS7.htm#)
 
 The Mapping between QMSAPI Methods and the PowerShell Commandlets can be found here:
 
