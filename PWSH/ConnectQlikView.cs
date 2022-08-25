@@ -33,8 +33,8 @@ namespace QlikView_CLI
         public Uri Uri { get => uri; set => uri = value; }
 
         [Parameter]
-        [ValidateSet("IQMS", "IQM1", "IQMS2", "IQMS3", "IQMS4", "IQMS5", "IQMS6")]
-        public string Version { get; set; } = "IQMS6";
+        [ValidateSet("IQMS", "IQM1", "IQMS2", "IQMS3", "IQMS4", "IQMS5", "IQMS6", "IQMS7")]
+        public string Version { get; set; } = "IQMS7";
 
         protected override void BeginProcessing()
         {
