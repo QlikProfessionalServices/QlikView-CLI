@@ -10,9 +10,6 @@ namespace QlikView_CLI
 
     public class QMS
     {
-        //internal QMS2Client client;
-        //internal QMS2Client client;
-        //internal dynamic client;
         public dynamic client;
 
         public event MessageEventHandler OnMessage;
@@ -74,22 +71,26 @@ namespace QlikView_CLI
                     client = NewQMS6Client(Url: Uri.AbsoluteUri);
                     break;
 
+                case "IQMS7":
+                    client = NewQMS7Client(Url: Uri.AbsoluteUri);
+                    break;
+
                 default:
-                    client = NewQMS6Client(Url: Uri.AbsoluteUri);
+                    client = NewQMS7Client(Url: Uri.AbsoluteUri);
                     break;
 
             }
             return client;
         }
 
-        public void Connect(string version = "IQMS6")
+        public void Connect(string version = "IQMS7")
         {
             client = GetClient(Url: Uri.AbsoluteUri, version);
             SetupBindings();
             Message(string.Format("Connected to {0}", client.Endpoint.Address.Uri.Host));
         }
 
-        public void Connect(string url, string version = "IQMS6")
+        public void Connect(string url, string version = "IQMS7")
         {
             Uri = new Uri(url);
             client = GetClient(Url: Uri.AbsoluteUri, version);
@@ -97,7 +98,7 @@ namespace QlikView_CLI
             Message(string.Format("Connected to {0}", client.Endpoint.Address.Uri.Host));
         }
 
-        public void Connect(string url, System.Net.NetworkCredential Credential, string version = "IQMS6")
+        public void Connect(string url, System.Net.NetworkCredential Credential, string version = "IQMS7")
         {
             Uri = new Uri(url);
             client = GetClient(Url: Uri.AbsoluteUri, version);
@@ -106,6 +107,15 @@ namespace QlikView_CLI
             client.ClientCredentials.Windows.ClientCredential.Password = Credential.Password;
             SetupBindings();
             Message(string.Format("Connected to {0}", client.Endpoint.Address.Uri.Host));
+        }
+
+        private static QMS7Client NewQMS7Client(string Url)
+        {
+            Uri serviceUri = new Uri(Url);
+            EndpointAddress endpointAddress = new EndpointAddress(serviceUri);
+            QMS7Client proxy = new QMS7Client(HttpBinding(), endpointAddress);
+            proxy.ClientCredentials.Windows.AllowedImpersonationLevel = System.Security.Principal.TokenImpersonationLevel.Impersonation;
+            return proxy;
         }
 
         private static QMS6Client NewQMS6Client(string Url)

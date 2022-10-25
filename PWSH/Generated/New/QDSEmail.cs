@@ -27,6 +27,8 @@ namespace QlikView_CLI.PWSH
         [Parameter]
         public System.String Attachmentplainsubject;
         [Parameter]
+        public System.Boolean Includewarnings = new System.Boolean();
+        [Parameter]
         public System.String Notifyhtmlbody;
         [Parameter]
         public System.String Notifyhtmlsubject;
@@ -44,7 +46,7 @@ namespace QlikView_CLI.PWSH
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            qdsemail = new QlikView_CLI.QMSAPI.QDSSettings.QDSEmail() { AlertHtmlBody = Alerthtmlbody, AlertHtmlSubject = Alerthtmlsubject, AlertMailAddresses = Alertmailaddresses, AlertPlainBody = Alertplainbody, AlertPlainSubject = Alertplainsubject, AttachmentHtmlBody = Attachmenthtmlbody, AttachmentHtmlSubject = Attachmenthtmlsubject, AttachmentPlainBody = Attachmentplainbody, AttachmentPlainSubject = Attachmentplainsubject, NotifyHtmlBody = Notifyhtmlbody, NotifyHtmlSubject = Notifyhtmlsubject, NotifyPlainBody = Notifyplainbody, NotifyPlainSubject = Notifyplainsubject };
+            qdsemail = new QlikView_CLI.QMSAPI.QDSSettings.QDSEmail() { AlertHtmlBody = Alerthtmlbody, AlertHtmlSubject = Alerthtmlsubject, AlertMailAddresses = Alertmailaddresses, AlertPlainBody = Alertplainbody, AlertPlainSubject = Alertplainsubject, AttachmentHtmlBody = Attachmenthtmlbody, AttachmentHtmlSubject = Attachmenthtmlsubject, AttachmentPlainBody = Attachmentplainbody, AttachmentPlainSubject = Attachmentplainsubject, IncludeWarnings = Includewarnings, NotifyHtmlBody = Notifyhtmlbody, NotifyHtmlSubject = Notifyhtmlsubject, NotifyPlainBody = Notifyplainbody, NotifyPlainSubject = Notifyplainsubject };
         }
 
         protected override void EndProcessing()

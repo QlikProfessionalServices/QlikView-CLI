@@ -13,6 +13,8 @@ namespace QlikView_CLI.PWSH
         [Parameter]
         public System.Guid ID = Guid.NewGuid();
         [Parameter]
+        public System.Boolean Isduplicateqvwapp = new System.Boolean();
+        [Parameter]
         public System.Boolean Isorphan = new System.Boolean();
         [Parameter]
         public System.Boolean Issubfolder = new System.Boolean();
@@ -34,7 +36,7 @@ namespace QlikView_CLI.PWSH
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            documentnode = new QlikView_CLI.QMSAPI.DocumentNode() { FolderID = Folderid, ID = ID, IsOrphan = Isorphan, IsSubFolder = Issubfolder, Name = Name, RelativePath = Relativepath, TaskCount = Taskcount, Type = Type };
+            documentnode = new QlikView_CLI.QMSAPI.DocumentNode() { FolderID = Folderid, ID = ID, IsDuplicateQVWApp = Isduplicateqvwapp, IsOrphan = Isorphan, IsSubFolder = Issubfolder, Name = Name, RelativePath = Relativepath, TaskCount = Taskcount, Type = Type };
         }
 
         protected override void EndProcessing()

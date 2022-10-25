@@ -19,7 +19,7 @@ namespace QlikView_CLI.PWSH
             base.BeginProcessing();
             if (qvsID == null)
             {
-                qvsID = Connection.QlikViewWebServer.Select(x => x.ID).ToArray();
+                qvsID = Connection.QlikViewServer.Select(x => x.ID).ToArray();
             }
 
         }

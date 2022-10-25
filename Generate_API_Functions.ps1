@@ -248,7 +248,7 @@ foreach ($Method in $Methods)
 		$ServiceParam = "dscID"
 		$ServiceProp = "QlikViewDirectoryServiceConnector"
 		$BeginBlock = @"
-if (dscID == null)
+if (dscID == default)
 {
     dscID = Connection.QlikViewDirectoryServiceConnector.Select(x => x.ID).ToArray();
 }
@@ -260,7 +260,7 @@ if (dscID == null)
 		$ServiceParam = "qdsID"
 		$ServiceProp = "QlikViewDistributionService"
 		$BeginBlock = @"
-if (qdsID == null)
+if (qdsID == default)
 {
     qdsID = Connection.QlikViewDistributionService.Select(x => x.ID).ToArray();
 }
@@ -270,9 +270,9 @@ if (qdsID == null)
 	if ($Definition.Input.Keys -contains "qvsID")
 	{
 		$ServiceParam = "qvsID"
-		$ServiceProp = "QlikViewWebServer"
+		$ServiceProp = "QlikViewServer"
 		$BeginBlock = @"
-if (qvsID == null)
+if (qvsID == default)
 {
     qvsID = Connection.QlikViewServer.Select(x => x.ID).ToArray();
 }
@@ -284,7 +284,7 @@ if (qvsID == null)
 		$ServiceParam = "qvwsID"
 		$ServiceProp = "QlikViewWebServer"
 		$BeginBlock = @"
-if (qvwsID == null)
+if (qvwsID == default)
 {
     qvwsID = Connection.QlikViewWebServer.Select(x => x.ID).ToArray();
 }
