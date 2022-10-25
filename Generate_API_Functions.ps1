@@ -422,7 +422,7 @@ if (qvwsID == default)
             base.BeginProcessing();
             $(if ($ServiceParam -ne "")
 		{
-			"if ($ServiceParam == null)
+			"if ($ServiceParam == default)
             {
                 $ServiceParam =  Connection.$ServiceProp.Select(x => x.ID).ToArray();
             }

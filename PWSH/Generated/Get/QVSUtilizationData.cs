@@ -19,7 +19,7 @@ namespace QlikView_CLI.PWSH
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
-            if (qvsID == null)
+            if (qvsID == default)
             {
                 qvsID = Connection.QlikViewServer.Select(x => x.ID).ToArray();
             }
