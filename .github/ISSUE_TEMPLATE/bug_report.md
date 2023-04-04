@@ -27,7 +27,7 @@ If applicable, add screenshots to help explain your problem.
  - QlikView Version:
  - PowerShell Version:
  - OS: [e.g. Server 2019]
- - Version [e.g. 1.4.2020.1016]
+ - QlikView-CLI Version [e.g. 1.4.2020.1016]
 
 **Additional context**
 Add any other context about the problem here.
